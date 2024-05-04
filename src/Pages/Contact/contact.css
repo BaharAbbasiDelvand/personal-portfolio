@@ -1,0 +1,14 @@
+.contact-container{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+.textfields{
+    display: flex;
+    flex-direction: column;
+}
+.your-name{
+    width: 500px;
+    height: 56px;
+}
