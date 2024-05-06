@@ -11,13 +11,12 @@
 }
 
 .square-button:hover {
-    background-color: #333; /* Darken color on hover */
+    background-color: #333; 
 }
 
 .css-sghohy-MuiButtonBase-root-MuiButton-root {
     color: white !important;
     background-color: black !important;
-
     min-width: 50px !important;
 }
 

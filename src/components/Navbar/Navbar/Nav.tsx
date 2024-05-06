@@ -49,13 +49,16 @@ export default function Navbar() {
                         label="Projects"
                         value="projects"
                         icon={<LaptopMacSharpIcon />}
+                        onClick={() => handleNavigation("projects")}
+
                     />
 
                     <BottomNavigationAction
-                        href="#contacts"
                         label="Contact Me"
                         value="contactme"
                         icon={<ConnectWithoutContactSharpIcon />}
+                        onClick={() => handleNavigation("contact")}
+
                     />
                 </BottomNavigation>
             </div>

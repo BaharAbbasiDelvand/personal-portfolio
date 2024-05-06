@@ -5,13 +5,13 @@ import './squarebutton.css';
 interface SquareButtonProps {
     link: string;
     icon: React.ElementType;
-    click?: () => void; // Use 'click' instead of 'onClick'
+    click?: () => void; 
 }
 
 const SquareButton: React.FC<SquareButtonProps> = ({ link, icon: Icon, click }) => {
     const handleClick = () => {
         if (click) {
-            click(); // Call the click function if provided
+            click(); 
         } else {
             window.location.href = link;
         }

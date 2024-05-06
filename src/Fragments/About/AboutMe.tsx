@@ -6,12 +6,6 @@ import SquareButton from "../../components/SquareButton/Squarebutton";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import Buttons from "../../components/Buttons/Buttons";
 const AboutMe = () => {
-        const linkedInProfileUrl =
-            "https://www.linkedin.com/in/your-profile-url";
-
-        const handleLinkedInButtonClick = () => {
-            window.open(linkedInProfileUrl, "_blank"); // Open LinkedIn profile in a new tab
-        };
 
     return (
         <div className="about-container">

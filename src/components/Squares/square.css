@@ -20,6 +20,7 @@
 .text {
     max-width: 90%; 
     overflow: hidden;
-    white-space: nowrap; 
+    text-align: center;
     font-size:medium;
+    overflow-x: scroll;
 }
