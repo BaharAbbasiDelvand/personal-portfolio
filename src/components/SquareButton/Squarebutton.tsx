@@ -21,7 +21,9 @@ const SquareButton: React.FC<SquareButtonProps> = ({ link, icon: Icon, click }) 
         <Button
             className="square-button"
             variant="contained"
-            color="primary"
+            sx={{
+                backgroundColor: "black"
+            }}
             endIcon={<Icon className="button_icon" />}
             onClick={handleClick}
         >

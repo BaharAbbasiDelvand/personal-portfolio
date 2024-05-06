@@ -66,6 +66,9 @@ export default function Navbar() {
                 <Button
                     variant="contained"
                     startIcon={<FileDownloadSharpIcon />}
+                    sx={{
+                        backgroundColor: "black"
+                    }}
                 >
                     Resume
                 </Button>
