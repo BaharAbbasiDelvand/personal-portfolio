@@ -26,26 +26,29 @@ export default function Navbar() {
     return (
         <div className="nav-container">
             <div className="nav-avatar">
-                <Avatar sx={{ bgcolor: "black" }}>B</Avatar>
+                <Avatar sx={{ bgcolor: "black"}}>B</Avatar>
             </div>
             <div className="nav-buttons">
                 <BottomNavigation
-                    sx={{ width: 500 }}
+                    sx={{ width: 500, color:"black"}}
                     value={value}
                     onChange={handleChange}
                 >
                     <BottomNavigationAction
+                        sx={{color:"black", "&:selected":{backgroundColor:"#333"}}}
                         label="About Me"
                         value="Aboutme"
                         icon={<Face3SharpIcon />}
                     />
                     <BottomNavigationAction
+                        sx={{color:"black"}}
                         label="Skills"
                         value="skills"
                         icon={<HardwareSharpIcon />}
                         onClick={() => handleNavigation("skills")}
                     />
                     <BottomNavigationAction
+                        sx={{color:"black"}}
                         label="Projects"
                         value="projects"
                         icon={<LaptopMacSharpIcon />}
@@ -54,6 +57,7 @@ export default function Navbar() {
                     />
 
                     <BottomNavigationAction
+                        sx={{color:"black"}}
                         label="Contact Me"
                         value="contactme"
                         icon={<ConnectWithoutContactSharpIcon />}
@@ -67,7 +71,9 @@ export default function Navbar() {
                     variant="contained"
                     startIcon={<FileDownloadSharpIcon />}
                     sx={{
-                        backgroundColor: "black"
+                        backgroundColor: "black", "&:hover": {
+                            backgroundColor: "#333",
+                        }
                     }}
                 >
                     Resume
