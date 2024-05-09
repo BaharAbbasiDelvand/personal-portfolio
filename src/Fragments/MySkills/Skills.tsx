@@ -31,14 +31,12 @@ const Skills = () => {
                     Skills:
                 </span>
             </h2>
-            <div className="first-row">
+            <div className="skills-tiles">
                 <Square icon={<CodeIcon />} text="Full-Stack Development" />
                 <Square icon={<TerminalIcon />} text="Shell Scripting" />
                 <Square icon={<WebhookIcon />} text="RESTful APIs" />
                 <Square icon={<DeveloperBoardIcon />} text="UI/UX Design" />
                 <Square icon={<IntegrationInstructionsIcon />} text="CI/CD" />
-            </div>
-            <div className="second-row">
                 <Square icon={<GitHubIcon />} text="Version Control (Git)" />
                 <Square icon={<ApiIcon />} text="API Development" />
                 <Square icon={<BugReportIcon />} text="Software Testing" />

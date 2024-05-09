@@ -4,18 +4,12 @@
     margin-bottom: 30px;
 
 }
-.first-row{
+.skills-tiles{
     display: flex;
     flex-direction: row;
     padding: 10px;
-    justify-content: space-around;
-}
-
-.second-row{
-    display: flex;
-    flex-direction: row;
-    padding: 10px;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .h2-container{
