@@ -9,12 +9,16 @@ import FileDownloadSharpIcon from "@mui/icons-material/FileDownloadSharp";
 import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import "./nav.css";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 export default function Navbar() {
     const [value, setValue] = React.useState("recents");
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
     };
+
+    const smallScreen = useMediaQuery("(max-width:1100px)");
 
     const handleNavigation = (elm: string) => {
         const element = document.getElementById(elm);
@@ -25,60 +29,68 @@ export default function Navbar() {
 
     return (
         <div className="nav-container">
-            <div className="nav-avatar">
-                <Avatar sx={{ bgcolor: "black"}}>B</Avatar>
-            </div>
-            <div className="nav-buttons">
-                <BottomNavigation
-                    sx={{ width: 500, color:"black"}}
-                    value={value}
-                    onChange={handleChange}
-                >
-                    <BottomNavigationAction
-                        sx={{color:"black", "&:selected":{backgroundColor:"#333"}}}
-                        label="About Me"
-                        value="Aboutme"
-                        icon={<Face3SharpIcon />}
-                    />
-                    <BottomNavigationAction
-                        sx={{color:"black"}}
-                        label="Skills"
-                        value="skills"
-                        icon={<HardwareSharpIcon />}
-                        onClick={() => handleNavigation("skills")}
-                    />
-                    <BottomNavigationAction
-                        sx={{color:"black"}}
-                        label="Projects"
-                        value="projects"
-                        icon={<LaptopMacSharpIcon />}
-                        onClick={() => handleNavigation("projects")}
+            {smallScreen ? (
+                <div>// We will add the toggle here</div>
+            ) : (
+                <>
+                    <div className="nav-avatar">
+                        <Avatar sx={{ bgcolor: "black" }}>B</Avatar>
+                    </div>
+                    <div className="nav-buttons">
+                        <BottomNavigation
+                            sx={{ color: "black" }}
+                            value={value}
+                            onChange={handleChange}
+                        >
+                            <BottomNavigationAction
+                                sx={{
+                                    color: "black",
+                                    "&:selected": { backgroundColor: "#333" },
+                                }}
+                                label="About Me"
+                                value="Aboutme"
+                                icon={<Face3SharpIcon />}
+                            />
+                            <BottomNavigationAction
+                                sx={{ color: "black" }}
+                                label="Skills"
+                                value="skills"
+                                icon={<HardwareSharpIcon />}
+                                onClick={() => handleNavigation("skills")}
+                            />
+                            <BottomNavigationAction
+                                sx={{ color: "black" }}
+                                label="Projects"
+                                value="projects"
+                                icon={<LaptopMacSharpIcon />}
+                                onClick={() => handleNavigation("projects")}
+                            />
 
-                    />
-
-                    <BottomNavigationAction
-                        sx={{color:"black"}}
-                        label="Contact Me"
-                        value="contactme"
-                        icon={<ConnectWithoutContactSharpIcon />}
-                        onClick={() => handleNavigation("contact")}
-
-                    />
-                </BottomNavigation>
-            </div>
-            <div className="nav-resume">
-                <Button
-                    variant="contained"
-                    startIcon={<FileDownloadSharpIcon />}
-                    sx={{
-                        backgroundColor: "black", "&:hover": {
-                            backgroundColor: "#333",
-                        }
-                    }}
-                >
-                    Resume
-                </Button>
-            </div>
+                            <BottomNavigationAction
+                                sx={{ color: "black" }}
+                                label="Contact Me"
+                                value="contactme"
+                                icon={<ConnectWithoutContactSharpIcon />}
+                                onClick={() => handleNavigation("contact")}
+                            />
+                        </BottomNavigation>
+                    </div>
+                    <div className="nav-resume">
+                        <Button
+                            variant="contained"
+                            startIcon={<FileDownloadSharpIcon />}
+                            sx={{
+                                backgroundColor: "black",
+                                "&:hover": {
+                                    backgroundColor: "#333",
+                                },
+                            }}
+                        >
+                            Resume
+                        </Button>
+                    </div>
+                </>
+            )}
         </div>
     );
 }
