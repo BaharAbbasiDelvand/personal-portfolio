@@ -10,6 +10,8 @@ import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import "./nav.css";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import MenuIcon from "@mui/icons-material/Menu";
+import { IconButton } from "@mui/material";
 
 export default function Navbar() {
     const [value, setValue] = React.useState("recents");
@@ -30,7 +32,14 @@ export default function Navbar() {
     return (
         <div className="nav-container">
             {smallScreen ? (
-                <div>// We will add the toggle here</div>
+                <>
+                    <div className="nav-avatar">
+                        <Avatar sx={{ bgcolor: "black" }}>B</Avatar>
+                    </div>
+                    <IconButton className="nav-toggle-icon" sx={{position: 'absolute'}}>
+                        <MenuIcon sx={{ color: "black" }} />
+                    </IconButton>
+                </>
             ) : (
                 <>
                     <div className="nav-avatar">

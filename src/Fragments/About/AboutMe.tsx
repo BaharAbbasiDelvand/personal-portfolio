@@ -9,9 +9,6 @@ const AboutMe = () => {
 
     return (
         <div className="about-container">
-            <div className="photo-container">
-                <img src={Banner} alt="My Image" />
-            </div>
             <div className="text-container">
                 <p> Hi! I'm</p>
                 <h1>Bahar Abbasi Delvand</h1>
@@ -22,7 +19,9 @@ const AboutMe = () => {
                 <div className="button-container"> <Buttons/> </div>
                 
             </div>
-            
+            <div className="photo-container">
+                {/* <img src={Banner} alt="My Image" /> */}
+            </div>
         </div>
     );
 };
