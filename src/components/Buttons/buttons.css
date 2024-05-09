@@ -1,8 +1,6 @@
 .buttons{
     display: flex;
     flex-direction: row;
-
-}
-.buttons .square-button {
-    margin-left: 32px;
+    justify-content: space-evenly;
+    width: 100%;
 }

@@ -30,9 +30,15 @@ const SquareButton: React.FC<SquareButtonProps> = ({
                 color: "white",
                 "&:hover": {
                     backgroundColor: "#333",
-                }, minWidth: "50px", border:"none", width:"60px"
-                , height:"60px", borderRadius:"5px", fontSize:"16px",
-                cursor:"pointer", justifyContent:"center"
+                },
+                minWidth: "50px",
+                border: "none",
+                width: "60px",
+                height: "60px",
+                borderRadius: "5px",
+                fontSize: "16px",
+                cursor: "pointer",
+                justifyContent: "center",
             }}
             endIcon={<Icon className="button_icon" />}
             onClick={handleClick}

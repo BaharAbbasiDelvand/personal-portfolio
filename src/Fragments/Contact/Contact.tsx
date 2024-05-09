@@ -11,18 +11,17 @@ const Contact = () => {
                     <TextField
                         className="textfield"
                         sx={{
-                            width: "500px",
                             height: "56px",
-                            borderRadius:"10px",
+                            borderRadius: "10px",
                             border: "2px solid black",
                             marginBottom: "40px",
-                            '& .MuiFormLabel-root-MuiInputLabel-root': {
-                                color: 'transparent',
+                            "& .MuiFormLabel-root-MuiInputLabel-root": {
+                                color: "transparent",
                             },
-                            '& .MuiFormLabel-root.MuiInputLabel-root.Mui-focused':
+                            "& .MuiFormLabel-root.MuiInputLabel-root.Mui-focused":
                                 {
-                                    color: 'transparent',
-                                }
+                                    color: "transparent",
+                                },
                         }}
                         id="outlined-basic"
                         label="Your name"
@@ -31,11 +30,10 @@ const Contact = () => {
                     <TextField
                         className="textfield"
                         sx={{
-                            width: "500px",
                             height: "56px",
                             border: "2px solid black",
                             marginBottom: "40px",
-                            borderRadius:"10px",
+                            borderRadius: "10px",
                         }}
                         id="outlined-basic"
                         label="Email"
@@ -44,10 +42,9 @@ const Contact = () => {
                     <TextField
                         className="textfield"
                         sx={{
-                            width: "500px",
                             height: "56px",
                             border: "2px solid black",
-                            borderRadius:"10px",
+                            borderRadius: "10px",
                             marginBottom: "40px",
                         }}
                         id="outlined-basic"
@@ -57,10 +54,9 @@ const Contact = () => {
                     <TextField
                         className="textfield"
                         sx={{
-                            width: "500px",
                             height: "56px",
                             border: "2px solid black",
-                            borderRadius:"10px",
+                            borderRadius: "10px",
                             marginBottom: "40px",
                         }}
                         id="outlined-basic"
@@ -74,7 +70,7 @@ const Contact = () => {
                                 color: "white",
                                 width: "176px",
                                 height: "56px",
-                                borderRadius:"10px",
+                                borderRadius: "10px",
                             }}
                             className="Connect-Button"
                         >
