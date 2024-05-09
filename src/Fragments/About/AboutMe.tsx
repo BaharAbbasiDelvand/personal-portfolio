@@ -8,7 +8,7 @@ import Buttons from "../../components/Buttons/Buttons";
 const AboutMe = () => {
 
     return (
-        <div className="about-container">
+        <div className="about-container" id="about">
             <div className="text-container">
                 <p> Hi! I'm</p>
                 <h1>Bahar Abbasi Delvand</h1>
