@@ -16,7 +16,6 @@ function App() {
       <Skills />
       <Projects />
       <Contact />
-      {/* <Buttons /> */}
       </header>
     </div>
   );

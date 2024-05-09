@@ -24,7 +24,7 @@ interface SquareProps {
 
 const Skills = () => {
     return (
-        <div id="skills">
+        <div className="skills-container">
             <h2 className="h2-container">
                 <span style={{ fontWeight: "normal" }}>My </span>
                 <span className="second-text" style={{ fontWeight: "bold" }}>
