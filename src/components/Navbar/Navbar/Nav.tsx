@@ -61,33 +61,33 @@ export default function Navbar() {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
-                {["About Me", "My Skills", "My Projects", "Contacts"].map(
+                {["About Me", "My Skills", "My Projects", "Contact Me"].map(
                     (text, index) => (
                         <ListItem key={text} disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    {index % 4 === 0 ? (
-                                        <Face3SharpIcon onClick={() =>
-                                            handleNavigation("about")
-                                        }/>
-                                    ) : index % 4 === 1 ? (
-                                        <HardwareSharpIcon onClick={() =>
-                                            handleNavigation("skills")
-                                        }/>
-                                    ) : index % 4 === 2 ? (
-                                        <LaptopMacSharpIcon onClick={() =>
-                                            handleNavigation("projects")
-                                        } />
-                                    ) : (
-                                        <ConnectWithoutContactSharpIcon
-                                            onClick={() =>
-                                                handleNavigation("contact")
-                                            }
-                                        />
-                                    )}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItemButton>
+                            <ListItemButton onClick={() => {
+                        if (index === 0) {
+                            handleNavigation("about");
+                        } else if (index === 1) {
+                            handleNavigation("skills");
+                        } else if (index === 2) {
+                            handleNavigation("projects");
+                        } else {
+                            handleNavigation("contact");
+                        }
+                    }}>
+                        <ListItemIcon>
+                            {index === 0 ? (
+                                <Face3SharpIcon />
+                            ) : index === 1 ? (
+                                <HardwareSharpIcon />
+                            ) : index === 2 ? (
+                                <LaptopMacSharpIcon />
+                            ) : (
+                                <ConnectWithoutContactSharpIcon />
+                            )}
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItemButton>
                         </ListItem>
                     )
                 )}
@@ -202,31 +202,3 @@ export default function Navbar() {
         </div>
     );
 }
-
-// const Menu = ({callBack}) => {
-
-//     const list = [['About', AboutPic,<AboutMe/>], ['Skills', SkillPic, <Skillslol/>], ['Projects', ProjPic, <Proj/>], ['Contact', ContactPic,<Contacts/>]]
-
-//     const clickHandler = (text) => {
-//         callBack(text);
-//     }
-
-//     return (
-//         <div className="menu-icons-container">
-//             {
-//                 list.map((item) => {
-//                     return(
-//                         <div className="menu-icon" onClick={() => clickHandler(item[2])}>
-//                             <Skills image={item[1]}/>
-//                             <h4>{item[0]}</h4>
-
-//                         </div>
-//                     )
-//                 })
-//             }
-
-//         </div>
-//     )
-// }
-
-// export default Menu;

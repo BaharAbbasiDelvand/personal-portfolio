@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: row;
     width: 100%;
+    text-align: left;
     justify-content: space-around;
     align-items: center;
     margin-bottom: 80px;
@@ -19,6 +20,7 @@
 .even .project {
     display: flex;
     flex-direction: row-reverse;
+    text-align: right;
     width: 100%;
     justify-content: space-around;
     align-items: center;
@@ -82,11 +84,13 @@
 }
 .subtext {
     color: #71717a;
+    text-align: left;
     font-size: large;
 }
 
 .h2-container {
     margin-bottom: 50px;
+    /* text-align: left; */
 }
 
 .link {

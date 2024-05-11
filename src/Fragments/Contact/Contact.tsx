@@ -72,8 +72,7 @@ const Contact = () => {
                                 height: "56px",
                                 borderRadius: "10px",
                             }}
-                            className="Connect-Button"
-                        >
+                            className="Connect-Button">
                             {" "}
                             Get In Touch
                         </Button>
