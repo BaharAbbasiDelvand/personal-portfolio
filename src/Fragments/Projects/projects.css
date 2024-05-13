@@ -88,6 +88,10 @@
     font-size: large;
 }
 
+.odd .subtext{
+    padding-right: 50px;
+}
+
 .h2-container {
     margin-bottom: 50px;
     /* text-align: left; */

@@ -25,25 +25,25 @@ const Projects = () => {
                     title="GAIB: Gen AI TestBot"
                     description="The GenAI Test Bot revolutionizes software testing by seamlessly connecting to GitHub repositories, fetching the latest commit details, and automating unit test case generation. Integrated into the VSCode environment, it analyzes code changes, crafts test scenarios, and provides precision reports, ensuring code quality and reliability. By automating test suite generation and documentation, it accelerates development cycles and enhances software quality. "
                     photo={GAIB}
-                    link="https://example.com/gaib"
+                    link="https://github.com/BaharAbbasiDelvand/GAIB"
                 />
             </div>
             <div className="even">
                 <ProjectSpace
                     number={2}
-                    title="Checkers Game"
+                    title="Angle Management: Protractor Tutorial App"
                     description=" "
-                    photo={Checkers}
-                    link="https://github.com/BaharAbbasiDelvand/Checkers"
+                    photo={Angle}
+                    link="https://github.com/BaharAbbasiDelvand/AngleManagement"
                 />
             </div>
             <div className="odd">
                 <ProjectSpace
                     number={3}
-                    title="Angle Management: Protractor Tutorial App"
+                    title="Checkers Game"
                     description=" "
-                    photo={Angle}
-                    link="https://github.com/BaharAbbasiDelvand/AngleManagement"
+                    photo={Checkers}
+                    link="https://github.com/BaharAbbasiDelvand/Checkers"
                 />
             </div>
         </div>

@@ -10,6 +10,7 @@ import Box from "@mui/material/Box";
 import FileDownloadSharpIcon from "@mui/icons-material/FileDownloadSharp";
 import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
+import WorkIcon from '@mui/icons-material/Work';
 import "./nav.css";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -30,7 +31,9 @@ export default function Navbar() {
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
     };
-
+    const handleResumeButtonClick = () => {
+        window.open('https://drive.google.com/file/d/1LI4tC60fsBlmnO2E0zZjAHO0DvU2DsNL/view?usp=sharing', '_blank');
+    };
     const toggleDrawer =
         (anchor: Anchor, open: boolean) =>
         (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -96,13 +99,9 @@ export default function Navbar() {
             <List>
                 {["Resume"].map((text, index) => (
                     <ListItem key={text} disablePadding>
-                        <ListItemButton>
+                        <ListItemButton onClick={() => handleResumeButtonClick()}>
                             <ListItemIcon>
-                                {index % 2 === 0 ? (
-                                    <Face3SharpIcon />
-                                ) : (
-                                    <HardwareSharpIcon />
-                                )}
+                                <WorkIcon/>
                             </ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItemButton>
@@ -193,6 +192,7 @@ export default function Navbar() {
                                     backgroundColor: "#333",
                                 },
                             }}
+                            onClick={handleResumeButtonClick}
                         >
                             Resume
                         </Button>
