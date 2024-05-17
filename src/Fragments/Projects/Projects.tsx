@@ -32,7 +32,7 @@ const Projects = () => {
                 <ProjectSpace
                     number={2}
                     title="Angle Management: Protractor Tutorial App"
-                    description=" "
+                    description="Angle Management is a game designed in Elm programming language specifically tailored for 7th graders in CBSE programs. Its primary aim is to facilitate the learning of protractor usage through several different tutorials and levels. Drawing inspiration from Norman's principles and implementing the Double Diamond design, the game ensures an intuitive user experience and structured learning approach. "
                     photo={Angle}
                     link="https://github.com/BaharAbbasiDelvand/AngleManagement"
                 />
@@ -41,7 +41,7 @@ const Projects = () => {
                 <ProjectSpace
                     number={3}
                     title="Checkers Game"
-                    description=" "
+                    description="This project demonstrates my skills in game development and problem-solving. It features a user-friendly interface and follows the standard rules of the game. Players can enjoy traditional gameplay with moves, captures, and victory conditions accurately represented. It showcases my ability to design and implement software solutions for classic games while maintaining simplicity and functionality."
                     photo={Checkers}
                     link="https://github.com/BaharAbbasiDelvand/Checkers"
                 />

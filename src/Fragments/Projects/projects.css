@@ -91,6 +91,11 @@
 .odd .subtext{
     padding-right: 50px;
 }
+.even .subtext{
+    text-align: right;
+    padding-left: 50px;
+    justify-content: end;
+}
 
 .h2-container {
     margin-bottom: 50px;
