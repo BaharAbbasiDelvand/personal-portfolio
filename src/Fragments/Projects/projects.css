@@ -68,11 +68,15 @@
 }
 
 .photo-proj-2 {
-    background-image: url('../../photos/Checkers.png');
+    background-image: url('../../photos/Portfolio.png');
 }
 
 .photo-proj-3 {
     background-image: url('../../photos/Angle.png');
+}
+
+.photo-proj-4{
+    background-image: url('../../photos/Checkers.png');
 }
 
 .photo-proj img {
