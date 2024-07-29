@@ -2,6 +2,8 @@ import React, { useState, ChangeEvent, useEffect } from "react";
 import "./contact.css";
 import { TextField, Button } from "@mui/material";
 import emailjs from "@emailjs/browser";
+import SquareButton from "../../components/SquareButton/Squarebutton";
+import Buttons from "../../components/Buttons/Buttons";
 
 interface EmailFormat {
     name: string;
@@ -149,9 +151,10 @@ const Contact: React.FC = () => {
                             disabled={isButtonDisabled}
                             onClick={handleGetInTouch}
                         >
-                            {" "}
                             Get In Touch
+                            
                         </Button>
+                        <Buttons/>
                     </div>
                 </div>
                 <div className="contact-text">

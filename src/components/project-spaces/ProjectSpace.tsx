@@ -1,11 +1,14 @@
 import React from "react";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import GitHubIcon from "@mui/icons-material/GitHub"; // Import GitHub icon
+
 interface ProjectProps {
     number: number;
     title: string;
     description: string;
     photo: string;
-    link: string;
+    mandatoryLink: string;
+    optionalLink?: string; 
 }
 
 const ProjectSpace: React.FC<ProjectProps> = ({
@@ -13,7 +16,8 @@ const ProjectSpace: React.FC<ProjectProps> = ({
     title,
     description,
     photo,
-    link,
+    mandatoryLink,
+    optionalLink,
 }) => {
     return (
         <div className="project">
@@ -27,13 +31,23 @@ const ProjectSpace: React.FC<ProjectProps> = ({
                 <h3>{title}</h3>
                 <p className="subtext">{description}</p>
                 <a
-                    href={link}
+                    href={mandatoryLink}
                     className="link"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <OpenInNewIcon />
+                    <GitHubIcon /> 
                 </a>
+                {optionalLink && (
+                    <a
+                        href={optionalLink}
+                        className="link optional"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <OpenInNewIcon />
+                    </a>
+                )}
             </div>
         </div>
     );

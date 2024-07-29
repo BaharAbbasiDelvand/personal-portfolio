@@ -32,7 +32,7 @@ export default function Navbar() {
         setValue(newValue);
     };
     const handleResumeButtonClick = () => {
-        window.open('https://drive.google.com/file/d/1LI4tC60fsBlmnO2E0zZjAHO0DvU2DsNL/view?usp=sharing', '_blank');
+        window.open('https://drive.google.com/file/d/1RiCAGqtRUtTN9yksO87dzBklaSliDlLE/view?usp=sharing', '_blank');
     };
     const toggleDrawer =
         (anchor: Anchor, open: boolean) =>

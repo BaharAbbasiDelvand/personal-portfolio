@@ -11,7 +11,7 @@
     text-align: left;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 80px;
+    margin-bottom: 0px;
     @media (max-width: 1100px) {
         flex-direction: column;
     }
@@ -24,7 +24,7 @@
     width: 100%;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 80px;
+    margin-bottom: 0px;
     @media (max-width: 1100px) {
         flex-direction: column;
     }
@@ -66,16 +66,22 @@
 .photo-proj-1 {
     background-image: url('../../photos/GAIB.png');
 }
-
 .photo-proj-2 {
+    background-image: url('../../photos/FigmaClone.png');
+}
+.photo-proj-3 {
+    background-image: url('../../photos/BookMERN.png');
+}
+
+.photo-proj-4 {
     background-image: url('../../photos/Portfolio.png');
 }
 
-.photo-proj-3 {
+.photo-proj-5 {
     background-image: url('../../photos/Angle.png');
 }
 
-.photo-proj-4{
+.photo-proj-6 {
     background-image: url('../../photos/Checkers.png');
 }
 
