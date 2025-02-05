@@ -1,6 +1,6 @@
 import React from "react";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
-import GitHubIcon from "@mui/icons-material/GitHub"; // Import GitHub icon
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 interface ProjectProps {
     number: number;
@@ -30,24 +30,26 @@ const ProjectSpace: React.FC<ProjectProps> = ({
                 </h2>
                 <h3>{title}</h3>
                 <p className="subtext">{description}</p>
-                <a
-                    href={mandatoryLink}
-                    className="link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <GitHubIcon /> 
-                </a>
-                {optionalLink && (
+                <div className="links-container">
                     <a
-                        href={optionalLink}
-                        className="link optional"
+                        href={mandatoryLink}
+                        className="link"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <OpenInNewIcon />
+                        <GitHubIcon /> 
                     </a>
-                )}
+                    {optionalLink && (
+                        <a
+                            href={optionalLink}
+                            className="link optional-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <OpenInNewIcon />
+                        </a>
+                    )}
+                </div>
             </div>
         </div>
     );

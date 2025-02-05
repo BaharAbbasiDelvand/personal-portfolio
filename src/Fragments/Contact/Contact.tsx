@@ -2,7 +2,6 @@ import React, { useState, ChangeEvent, useEffect } from "react";
 import "./contact.css";
 import { TextField, Button } from "@mui/material";
 import emailjs from "@emailjs/browser";
-import SquareButton from "../../components/SquareButton/Squarebutton";
 import Buttons from "../../components/Buttons/Buttons";
 
 interface EmailFormat {
@@ -23,9 +22,9 @@ const Contact: React.FC = () => {
     const [messageInfo, setMessageinfo] = useState<EmailFormat>(initialEmail);
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     const validator = require("validator");
-    const PUBLIC_KEY = "LFKtcHiZLzt1S3MJ7";
-    const TEMPLATE_ID = "template_pr779zh";
-    const SERVICE_ID = "service_xsl61ui";
+    const PUBLIC_KEY = "RdbdkTZMl_xB9SiSu";
+    const TEMPLATE_ID = "template_0aj10gh";
+    const SERVICE_ID = "service_iv0izk7";
 
     const handleFieldChange = (e: any) => {
         const {

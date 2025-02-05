@@ -109,9 +109,22 @@
 
 .h2-container {
     margin-bottom: 50px;
-    /* text-align: left; */
 }
 
 .link {
     color: white;
 }
+/* .odd .links-container {
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px; 
+    
+}
+.even .links-container{
+    display: flex;
+    flex-direction: row;
+
+
+    padding-right: 10px; 
+    
+} */
