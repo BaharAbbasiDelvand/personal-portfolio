@@ -6,7 +6,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
 const Buttons = () => {
     const handleEmailButtonClick = () => {
-        window.location.href = "mailto:abbasidb@mcmaster.ca";
+        window.location.href = "mailto:baharabbasidelvand@gmail.com";
     };
     return (
         <div className="buttons">
