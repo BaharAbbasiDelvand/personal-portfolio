@@ -34,3 +34,9 @@
     color: #fffeee !important;
     background-color: #672856 !important;
 }
+
+.buttons{
+    margin-top: 15px;
+    justify-content: space-between;
+
+}
