@@ -1,21 +1,23 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import Buttons from "./components/Buttons/Buttons";
 import Navbar from "./components/Navbar/Navbar/Nav";
 import AboutMe from "./Fragments/About/AboutMe";
 import Skills from "./Fragments/MySkills/Skills";
 import Projects from "./Fragments/Projects/Projects";
 import Contact from "./Fragments/Contact/Contact";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Old from "./Pages/Old";
+import New from "./Pages/New";
 function App() {
     return (
+        <Router>
         <div className="App">
-            <Navbar />
-            <AboutMe />
-            <Skills />
-            <Projects />
-            <Contact />
+            <Routes>
+            <Route path="/" element={<Old/>}/>
+            <Route path="abc" element={<New/>}/>
+            </Routes>
         </div>
+        </Router>
     );
 }
 

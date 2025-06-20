@@ -8,6 +8,7 @@ import Angle from "../../photos/Angle.png";
 import Portfolio from '../../photos/Portfolio.png';
 import Book from '../../photos/BookMERN.png'
 import ProjectSpace from "../../components/project-spaces/ProjectSpace";
+import New from "../../Pages/New";
 const Projects = () => {
     return (
         <div className="project-container" id="projects">
@@ -20,6 +21,7 @@ const Projects = () => {
                     style={{ fontWeight: "bold", color: "white" }}
                 >
                     Projects:
+                    <New/>
                 </span>
             </h2>
             <div className="odd">
