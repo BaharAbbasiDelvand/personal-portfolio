@@ -33,7 +33,7 @@ export default function Navbar() {
     };
     const handleResumeButtonClick = () => {
         window.open(
-            "https://drive.google.com/file/d/1RiCAGqtRUtTN9yksO87dzBklaSliDlLE/view?usp=sharing",
+            "https://drive.google.com/file/d/1UbsH5jgd3IsBPikGZZB3EuiDylb5yKxu/view?usp=sharing",
             "_blank"
         );
     };
