@@ -22,13 +22,17 @@
 
 .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
     height: 56px;
-    border: 2px solid black;
+    border: 2px solid #8e2e5e;
     margin-bottom: 40px;
 }
 
+.MuiInputBase-root-MuiOutlinedInput-root.Mui-selected {
+    color: #8e2e5e !important;
+}
+
 .Connect-Button {
-    background-color: black;
-    color: white;
+    background-color: #8e2e5e;
+    color: #fffeee;
 }
 
 .contact-container {
@@ -53,8 +57,8 @@
     color: transparent;
 }
 
-.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
-    color: black;
+.MuiFormLabel-root-MuiInputLabel-root {
+    color: #8e2e5e;
 }
 
 .textfield .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root {

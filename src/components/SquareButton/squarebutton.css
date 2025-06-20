@@ -1,8 +1,8 @@
 .square-button {
     width: 60px;
     height: 60px;
-    background-color: black;
-    color: white;
+    background-color: #25503d;
+    color: #fffeee;
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -11,12 +11,18 @@
 }
 
 .square-button:hover {
-    background-color: #333; 
+    background-color: #333;
 }
 
-.css-sghohy-MuiButtonBase-root-MuiButton-root {
-    color: white !important;
-    background-color: black !important;
+.MuiButtonBase-root-MuiButton-root {
+    color: #fffeee !important;
+    background-color: #672856 !important;
+    min-width: 50px !important;
+}
+
+.MuiButton-root {
+    color: #fffeee !important;
+    background-color: #672856 !important;
     min-width: 50px !important;
 }
 
@@ -25,4 +31,6 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%) scale(1.3);
+    color: #fffeee !important;
+    background-color: #672856 !important;
 }
