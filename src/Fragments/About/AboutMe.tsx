@@ -12,7 +12,20 @@ const AboutMe = () => {
                 <p> Hello there! I'm </p>
                 <h1>Bahar Abbasi Delvand</h1>
                 <p>
-                Hello, and welcome to my personal portfolio! I'm thrilled to have you here. I'm currently in my fourth year pursuing a degree in Computer Science at McMaster University. Throughout my academic journey, I've delved into various facets of computer science, from programming languages to algorithms, and have developed a deep passion for crafting elegant solutions to complex problems. This portfolio serves as a testament to my dedication, showcasing projects that highlight my skills, creativity, and commitment to excellence in the field.
+                    I’m a Computer Science graduate from McMaster University with
+                    a minor in Art History. My work blends technical
+                    problem-solving with creative structure. Whether I’m
+                    building full-stack web apps, integrating AI into
+                    development workflows, or analyzing 19th-century artists
+                    through geospatial data, I focus on creating systems that
+                    are intuitive, efficient, and thoughtful. I’m currently
+                    working as a full-stack developer at MBA4HIRE, where I’ve
+                    helped build scalable tools for real-time financial
+                    operations and automated schema generation using GPT-powered
+                    features. I also assist in an art history research project using ArcGIS and SQL to study how geography
+                    shaped artistic networks in 19th-century France. This
+                    portfolio is a space for the things I’ve built, explored,
+                    and continue to learn. Thanks for stopping by :){" "}
                 </p>
                 <div className="button-container">
                     {" "}

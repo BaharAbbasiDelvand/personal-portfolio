@@ -1,28 +1,19 @@
 import React from "react";
 import "./projects.css";
-import FigmaClone from '../../photos/FigmaClone.png'
+import FigmaClone from "../../photos/FigmaClone.png";
 import GAIB from "../../photos/GAIB.png";
 import Checkers from "../../photos/Checkers.png";
 import { Scale } from "@mui/icons-material";
 import Angle from "../../photos/Angle.png";
-import Portfolio from '../../photos/Portfolio.png';
-import Book from '../../photos/BookMERN.png'
+import Portfolio from "../../photos/Portfolio.png";
+import Book from "../../photos/BookMERN.png";
 import ProjectSpace from "../../components/project-spaces/ProjectSpace";
-import New from "../../Pages/New";
 const Projects = () => {
     return (
         <div className="project-container" id="projects">
-            <h2 className="h2-container" style={{ marginBottom: "20px" }}>
-                <span style={{ fontWeight: "normal", color: "white" }}>
-                    My{" "}
-                </span>
-                <span
-                    className="second-text"
-                    style={{ fontWeight: "bold", color: "white" }}
-                >
-                    Projects:
-                    <New/>
-                </span>
+            <h2 className="h2-container-proj" style={{ marginBottom: "20px" }}>
+                    <span className="text-normal">My </span>
+                    <span className="text-bold">Projects:</span>
             </h2>
             <div className="odd">
                 <ProjectSpace
