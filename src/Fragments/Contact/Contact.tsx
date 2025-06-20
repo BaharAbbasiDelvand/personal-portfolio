@@ -3,7 +3,6 @@ import "./contact.css";
 import { TextField, Button } from "@mui/material";
 import emailjs from "@emailjs/browser";
 import Buttons from "../../components/Buttons/Buttons";
-
 interface EmailFormat {
     name: string;
     email: string;
@@ -22,9 +21,9 @@ const Contact: React.FC = () => {
     const [messageInfo, setMessageinfo] = useState<EmailFormat>(initialEmail);
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     const validator = require("validator");
-    const PUBLIC_KEY = "RdbdkTZMl_xB9SiSu";
-    const TEMPLATE_ID = "template_0aj10gh";
-    const SERVICE_ID = "service_iv0izk7";
+    const PUBLIC_KEY = process.env.REACT_APP_PUBLIC_KEY;
+    const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID;
+    const SERVICE_ID = process.env.REACT_APP_SERVICE_ID;
 
     const handleFieldChange = (e: any) => {
         const {
@@ -46,6 +45,7 @@ const Contact: React.FC = () => {
             return;
         }
         setIsButtonDisabled(true);
+        
     };
 
     const handleGetInTouch = () => {
@@ -56,7 +56,12 @@ const Contact: React.FC = () => {
             message: messageInfo.message,
             website: messageInfo.website,
         };
-        emailjs.send(SERVICE_ID, TEMPLATE_ID, template_forms, PUBLIC_KEY).then(
+        emailjs.send(
+            SERVICE_ID ?? '',
+            TEMPLATE_ID ?? '',
+            template_forms,
+            PUBLIC_KEY ?? ''
+        ).then(
             () => {
                 console.log("SUCCESS!");
             },
@@ -64,6 +69,7 @@ const Contact: React.FC = () => {
                 console.log("FAILED...", error.text);
             }
         );
+        
         setMessageinfo(initialEmail);
     };
 

@@ -10,7 +10,7 @@ import Box from "@mui/material/Box";
 import FileDownloadSharpIcon from "@mui/icons-material/FileDownloadSharp";
 import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
-import WorkIcon from '@mui/icons-material/Work';
+import WorkIcon from "@mui/icons-material/Work";
 import "./nav.css";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -32,7 +32,10 @@ export default function Navbar() {
         setValue(newValue);
     };
     const handleResumeButtonClick = () => {
-        window.open('https://drive.google.com/file/d/1RiCAGqtRUtTN9yksO87dzBklaSliDlLE/view?usp=sharing', '_blank');
+        window.open(
+            "https://drive.google.com/file/d/1RiCAGqtRUtTN9yksO87dzBklaSliDlLE/view?usp=sharing",
+            "_blank"
+        );
     };
     const toggleDrawer =
         (anchor: Anchor, open: boolean) =>
@@ -67,30 +70,32 @@ export default function Navbar() {
                 {["About Me", "My Skills", "My Projects", "Contact Me"].map(
                     (text, index) => (
                         <ListItem key={text} disablePadding>
-                            <ListItemButton onClick={() => {
-                        if (index === 0) {
-                            handleNavigation("about");
-                        } else if (index === 1) {
-                            handleNavigation("skills");
-                        } else if (index === 2) {
-                            handleNavigation("projects");
-                        } else {
-                            handleNavigation("contact");
-                        }
-                    }}>
-                        <ListItemIcon>
-                            {index === 0 ? (
-                                <Face3SharpIcon />
-                            ) : index === 1 ? (
-                                <HardwareSharpIcon />
-                            ) : index === 2 ? (
-                                <LaptopMacSharpIcon />
-                            ) : (
-                                <ConnectWithoutContactSharpIcon />
-                            )}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItemButton>
+                            <ListItemButton
+                                onClick={() => {
+                                    if (index === 0) {
+                                        handleNavigation("about");
+                                    } else if (index === 1) {
+                                        handleNavigation("skills");
+                                    } else if (index === 2) {
+                                        handleNavigation("projects");
+                                    } else {
+                                        handleNavigation("contact");
+                                    }
+                                }}
+                            >
+                                <ListItemIcon>
+                                    {index === 0 ? (
+                                        <Face3SharpIcon />
+                                    ) : index === 1 ? (
+                                        <HardwareSharpIcon />
+                                    ) : index === 2 ? (
+                                        <LaptopMacSharpIcon />
+                                    ) : (
+                                        <ConnectWithoutContactSharpIcon />
+                                    )}
+                                </ListItemIcon>
+                                <ListItemText primary={text} />
+                            </ListItemButton>
                         </ListItem>
                     )
                 )}
@@ -99,9 +104,11 @@ export default function Navbar() {
             <List>
                 {["Resume"].map((text, index) => (
                     <ListItem key={text} disablePadding>
-                        <ListItemButton onClick={() => handleResumeButtonClick()}>
+                        <ListItemButton
+                            onClick={() => handleResumeButtonClick()}
+                        >
                             <ListItemIcon>
-                                <WorkIcon/>
+                                <WorkIcon />
                             </ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItemButton>
@@ -116,7 +123,7 @@ export default function Navbar() {
             {smallScreen ? (
                 <>
                     <div className="nav-avatar">
-                        <Avatar sx={{ bgcolor: "black" }}>B</Avatar>
+                        <Avatar sx={{ bgcolor: "#8e2e5e" }}>B</Avatar>
                     </div>
                     {(["right"] as const).map((anchor) => (
                         <React.Fragment key={anchor}>
