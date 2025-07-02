@@ -1,9 +1,10 @@
 
 import React from "react";
+import Header from "../components/Header/Header";
 
 function New() {
     return <div>
-        meowmeow
+        <Header/>
     </div>;
 }
 

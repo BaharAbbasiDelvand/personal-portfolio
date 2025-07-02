@@ -1,5 +1,5 @@
 .App {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     text-align: center;
     /* overflow-x: hidden; */
@@ -8,7 +8,7 @@
     background: linear-gradient(90deg, rgba(255,236,245,1) 0%, rgba(255,254,236,1) 100%);    flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
+    font-size: calc(14px + 2vmin);
     color: #0b1a13;
 }
 
@@ -19,8 +19,8 @@
 
 @font-face {
     font-family: "Sora";
-    src: url("./Assets/Sora/static/Sora-Regular.ttf");
-    font-weight: 400;
+    src: url("./Assets/SF-Pro.ttf");
+    font-weight: 350;
     font-style: oblique;
 }
 

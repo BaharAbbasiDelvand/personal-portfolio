@@ -10,7 +10,8 @@ const AboutMe = () => {
         <div className="about-container" id="about">
             <div className="text-container">
                 <p> Hello there! I'm </p>
-                <h1>Bahar Abbasi Delvand</h1>
+
+                <h1 className="name">Bahar Abbasi Delvand</h1>
                 <p>
                     I’m a Computer Science graduate from McMaster University with
                     a minor in Art History. My work blends technical
