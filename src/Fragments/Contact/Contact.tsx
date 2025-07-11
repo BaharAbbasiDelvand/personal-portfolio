@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent, useEffect } from "react";
 import "./contact.css";
 import { TextField, Button } from "@mui/material";
 import emailjs from "@emailjs/browser";
-import Buttons from "../../components/Buttons/Buttons";
+import Buttons from "../../components/old/Buttons/Buttons";
 interface EmailFormat {
     name: string;
     email: string;

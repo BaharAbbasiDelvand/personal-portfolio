@@ -1,0 +1,30 @@
+.apps-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    background: transparent;
+    border: none;
+  }
+  
+  .apps-wrapper:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .apps-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .apps-title {
+    font-size: 12px;
+    color: #333;
+  }
+  

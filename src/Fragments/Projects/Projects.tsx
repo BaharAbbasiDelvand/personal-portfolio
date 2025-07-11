@@ -7,7 +7,7 @@ import { Scale } from "@mui/icons-material";
 import Angle from "../../photos/Angle.png";
 import Portfolio from "../../photos/Portfolio.png";
 import Book from "../../photos/BookMERN.png";
-import ProjectSpace from "../../components/project-spaces/ProjectSpace";
+import ProjectSpace from "../../components/old/project-spaces/ProjectSpace";
 const Projects = () => {
     return (
         <div className="project-container" id="projects">

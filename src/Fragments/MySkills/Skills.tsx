@@ -1,7 +1,7 @@
 import React from "react";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 import { SvgIconTypeMap } from "@mui/material";
-import Square from "../../components/Squares/Squares";
+import Square from "../../components/old/Squares/Squares";
 import FavoriteIcon from "@mui/icons-material/Favorite"; // Importing a Material-UI icon
 import DeveloperBoardIcon from "@mui/icons-material/DeveloperBoard";
 import JoinRightIcon from "@mui/icons-material/JoinRight";

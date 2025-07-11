@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Navbar from "./components/Navbar/Navbar/Nav";
+import Navbar from "./components/old/Navbar/Navbar/Nav";
 import AboutMe from "./Fragments/About/AboutMe";
 import Skills from "./Fragments/MySkills/Skills";
 import Projects from "./Fragments/Projects/Projects";

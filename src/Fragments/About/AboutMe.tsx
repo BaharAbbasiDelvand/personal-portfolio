@@ -2,9 +2,9 @@ import React from "react";
 import Banner from "../../photos/Banner.png";
 import "./aboutme.css";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import SquareButton from "../../components/SquareButton/Squarebutton";
+import SquareButton from "../../components/old/SquareButton/Squarebutton";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import Buttons from "../../components/Buttons/Buttons";
+import Buttons from "../../components/old/Buttons/Buttons";
 const AboutMe = () => {
     return (
         <div className="about-container" id="about">
