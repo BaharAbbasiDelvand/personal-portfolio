@@ -27,4 +27,8 @@
     font-size: 12px;
     color: #333;
   }
+
+  .app-container{
+    background-color: transparent;
+  }
   
