@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useDrag, useDragLayer } from "react-dnd";
+import React from "react";
+import { useDrag } from "react-dnd";
 import "./apps.css";
 
 interface AppsProps {
@@ -8,33 +8,22 @@ interface AppsProps {
     onClick: () => void;
     id: string;
     position: { x: number; y: number };
-
 }
 
-const Apps: React.FC<AppsProps> = ({ iconSrc, title, onClick, id }) => {
-    const [pos, setPos] = useState({ x: 100, y: 100 });
-
-    const [{ isDragging }, dragRef, dragPreview] = useDrag(() => ({
+const Apps: React.FC<AppsProps> = ({
+    iconSrc,
+    title,
+    onClick,
+    id,
+    position,
+}) => {
+    const [{ isDragging }, dragRef] = useDrag(() => ({
         type: "APP_ICON",
-        item: { id, pos },
+        item: { id },
         collect: (monitor) => ({
             isDragging: monitor.isDragging(),
         }),
     }));
-
-    const { currentOffset, draggingItem } = useDragLayer((monitor) => ({
-        currentOffset: monitor.getClientOffset(),
-        draggingItem: monitor.getItem(),
-    }));
-
-    useEffect(() => {
-        if (draggingItem?.id === id && currentOffset) {
-            setPos({
-                x: currentOffset.x,
-                y: currentOffset.y,
-            });
-        }
-    }, [currentOffset, draggingItem, id]);
 
     return (
         <div
@@ -42,8 +31,8 @@ const Apps: React.FC<AppsProps> = ({ iconSrc, title, onClick, id }) => {
             className="app-container"
             style={{
                 position: "absolute",
-                left: pos.x,
-                top: pos.y,
+                left: position.x,
+                top: position.y,
                 cursor: "grab",
                 opacity: isDragging ? 0.5 : 1,
                 zIndex: 10,

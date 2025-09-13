@@ -17,7 +17,7 @@ export default function PortfolioHeader() {
                 minute: "2-digit",
                 hour12: false,
             };
-            setCurrentTime(now.toLocaleString("en-US", options)); 
+            setCurrentTime(now.toLocaleDateString("en-US", options));
         };
 
         updateTime();
@@ -82,7 +82,7 @@ export default function PortfolioHeader() {
                 </div>
 
                 <div className="status-item time">
-                    <span>{currentTime || "..."}</span>
+                    <span>{currentTime}</span>
                 </div>
             </div>
         </header>
