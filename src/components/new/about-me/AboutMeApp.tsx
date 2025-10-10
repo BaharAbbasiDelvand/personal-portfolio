@@ -1,7 +1,7 @@
 import React from "react";
 import { AppFrame } from "../app-frames/App-frames";
 import "./aboutmeapp.css";
-// import Me from "../../../Assets/photos/Me.png";
+import Me from "../../../Assets/photos/Me.png";
 type AboutMeAppProps = { isOpen: boolean; onClose: () => void };
 
 export const AboutMeApp: React.FC<AboutMeAppProps> = ({ isOpen, onClose }) => {
@@ -44,11 +44,11 @@ export const AboutMeApp: React.FC<AboutMeAppProps> = ({ isOpen, onClose }) => {
             <div className="aboutme-side">
                 <div className="aboutme-photo">
                     <div className="aboutme-photo-inner">
-                        {/* <img
+                        <img
                             src={Me}
                             alt="Bahar Abbasi Delvand"
                             className="aboutme-photo-img"
-                        /> */}
+                        />
                     </div>
                 </div>
             </div>
