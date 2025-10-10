@@ -11,12 +11,11 @@ const snapToGrid = (x: number, y: number) => ({
 });
 
 function DesktopContent() {
-    const [openAppId, setOpenAppId] = useState<string | null>(null);
-    const [openAboutMe, setOpenAboutMe] = useState(false)
+    const [openAboutMe, setOpenAboutMe] = useState(false);
 
     const handleAppClick = (id: string) => {
-        if (id === "about-me") setOpenAboutMe(true)
-    }
+        if (id === "about-me") setOpenAboutMe(true);
+    };
 
     const [apps, setApps] = useState([
         {
@@ -109,8 +108,11 @@ function DesktopContent() {
                         position={app.position}
                     />
                 ))}
-                {openAppId === "about-me" && (
-                    <AboutMeApp onClose={() => setOpenAppId(null)} isOpen={false} />
+                {openAboutMe && (
+                    <AboutMeApp
+                        isOpen={openAboutMe}
+                        onClose={() => setOpenAboutMe(false)}
+                    />
                 )}
             </div>
         </div>
