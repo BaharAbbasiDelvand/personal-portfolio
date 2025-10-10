@@ -1,33 +1,60 @@
-.aboutme-body{
-    padding:24px;
-    display:grid;
-    grid-template-columns:1fr 240px;
-    gap:18px;
-    min-height:100%;
-    align-content:start;
-  }
-  
-  .af-window.aboutme-window{
-    background:linear-gradient(180deg,#f9f7e3,#f7eeb8 80%) !important;
-  }
-  
-  .aboutme-main{
-    background:rgba(255,255,255,0.6);
-    border:1px solid rgba(0,0,0,0.08);
-    border-radius:12px;
-    padding:28px;
-  }
-  
-  .aboutme-hello{margin:0 0 6px 0;font-size:22px;color:#4b5563}
-  .aboutme-name{margin:0 0 18px 0;font-size:44px;line-height:1.1;color:#176b3a;font-weight:800}
-  .aboutme-paragraph{color:#2f3a45;font-size:16px;line-height:1.8;margin:14px 0}
-  
-  .aboutme-side{display:flex;align-items:flex-start;justify-content:center}
-  .aboutme-photo{
-    width:180px;height:220px;border-radius:18px;
-    background:linear-gradient(135deg,#ffd5f0,#cfd4ff);
-    border:4px solid #fff;box-shadow:0 10px 22px rgba(0,0,0,0.12);
-    transform:rotate(2deg);display:grid;place-items:center;
-  }
-  .aboutme-photo-inner{color:#6b7280;font-size:14px;font-weight:600}
-  
+.aboutme-body {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 18px;
+    min-height: 100%;
+    align-content: start;
+}
+
+.af-window.aboutme-window {
+    background: linear-gradient(180deg, #f9f7e3, #f7eeb8 80%) !important;
+}
+
+.aboutme-main {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    padding: 28px;
+}
+
+.aboutme-hello {
+    margin: 0 0 6px 0;
+    font-size: 22px;
+    color: #4b5563;
+}
+.aboutme-name {
+    margin: 0 0 18px 0;
+    font-size: 44px;
+    line-height: 1.1;
+    color: #176b3a;
+    font-weight: 800;
+}
+.aboutme-paragraph {
+    color: #2f3a45;
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 14px 0;
+}
+
+.aboutme-side {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+.aboutme-photo {
+    width: 180px;
+    height: 220px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #ffd5f0, #cfd4ff);
+    border: 4px solid #fff;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+    transform: rotate(2deg);
+    display: grid;
+    place-items: center;
+}
+.aboutme-photo-inner {
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: 600;
+}

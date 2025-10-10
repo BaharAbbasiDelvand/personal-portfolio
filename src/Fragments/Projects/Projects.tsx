@@ -1,12 +1,12 @@
 import React from "react";
 import "./projects.css";
-import FigmaClone from "../../photos/FigmaClone.png";
-import GAIB from "../../photos/GAIB.png";
-import Checkers from "../../photos/Checkers.png";
+import FigmaClone from "../../Assets/photos/FigmaClone.png";
+import GAIB from "../../Assets/photos/GAIB.png";
+import Checkers from "../../Assets/photos/Checkers.png";
 import { Scale } from "@mui/icons-material";
-import Angle from "../../photos/Angle.png";
-import Portfolio from "../../photos/Portfolio.png";
-import Book from "../../photos/BookMERN.png";
+import Angle from "../../Assets/photos/Angle.png";
+import Portfolio from "../../Assets/photos/Portfolio.png";
+import Book from "../../Assets/photos/BookMERN.png";
 import ProjectSpace from "../../components/old/project-spaces/ProjectSpace";
 const Projects = () => {
     return (
