@@ -36,6 +36,18 @@ function DesktopContent() {
             title: "My Experience",
             position: { x: 80, y: 240 },
         },
+        {
+            id: "GAIB",
+            iconSrc: "/GAIB.png",
+            title: "GAIB",
+            position: { x: 80, y: 320 },
+        },
+        // {
+        //     id: "GAIB",
+        //     iconSrc: "/GAIB.png",
+        //     title: "GAIB",
+        //     position: { x: 80, y: 320 },
+        // } //make folder eventually for projects
     ]);
 
     const isOccupied = (x: number, y: number, draggingId: string) => {
