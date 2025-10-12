@@ -3,11 +3,11 @@ import { useDrop } from "react-dnd";
 import Apps from "../Apps/Apps";
 import { AboutMeApp } from "../about-me/AboutMeApp";
 
-const GRID_SIZE = 80;
+const GRID_SIZE = 10;
 
 const snapToGrid = (x: number, y: number) => ({
-    x: Math.round(x / GRID_SIZE) * GRID_SIZE,
-    y: Math.round(y / GRID_SIZE) * GRID_SIZE,
+    x: (x / GRID_SIZE) * GRID_SIZE,
+    y: (y / GRID_SIZE) * GRID_SIZE,
 });
 
 function DesktopContent() {
@@ -22,32 +22,50 @@ function DesktopContent() {
             id: "about-me",
             iconSrc: "/Banner.png",
             title: "About Me",
-            position: { x: 80, y: 80 },
+            position: { x: 25, y: 40 },
         },
         {
             id: "Skills",
             iconSrc: "/Skills.png",
             title: "Skills",
-            position: { x: 80, y: 160 },
+            position: { x: 25, y: 120 },
         },
         {
             id: "XP",
             iconSrc: "/Experience.png",
             title: "My Experience",
-            position: { x: 80, y: 240 },
+            position: { x: 25, y: 200 },
         },
         {
             id: "GAIB",
             iconSrc: "/GAIB.png",
             title: "GAIB",
-            position: { x: 80, y: 320 },
+            position: { x: 25, y: 280 },
         },
-        // {
-        //     id: "GAIB",
-        //     iconSrc: "/GAIB.png",
-        //     title: "GAIB",
-        //     position: { x: 80, y: 320 },
-        // } //make folder eventually for projects
+        {
+            id: "AWS",
+            iconSrc: "/AWS.png",
+            title: "AWS Certification",
+            position: { x: 25, y: 360 },
+        },
+        {
+            id: "Resume",
+            iconSrc: "/Resume.png",
+            title: "My Resume",
+            position: { x: 25, y: 440 },
+        },
+        {
+            id: "Contact",
+            iconSrc: "/ContactMe.png",
+            title: "Contact Me",
+            position: { x: 25, y: 520 },
+        },
+                {
+            id: "folder",
+            iconSrc: "/folder.png",
+            title: "Projects",
+            position: { x: 25, y: 600 },
+        } //make folder eventually for projects
     ]);
 
     const isOccupied = (x: number, y: number, draggingId: string) => {
