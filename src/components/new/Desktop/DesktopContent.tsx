@@ -3,6 +3,7 @@ import { useDrop } from "react-dnd";
 import Apps from "../Apps/Apps";
 import { AboutMeApp } from "../about-me/AboutMeApp";
 import AWS from "../AWS/AWS";
+import Resume from "../Resume/Resume";
 
 const GRID_SIZE = 10;
 
@@ -14,10 +15,12 @@ const snapToGrid = (x: number, y: number) => ({
 function DesktopContent() {
     const [openAboutMe, setOpenAboutMe] = useState(false);
     const [openAWS, setOpenAWS] = useState(false);
+    const [openMyResume, setOpenMyResume] = useState(false);
 
     const handleAppClick = (id: string) => {
         if (id === "about-me") setOpenAboutMe(true);
         if (id === "AWS") setOpenAWS(true);
+        if (id==="Resume") setOpenMyResume(true);
     };
 
     const [apps, setApps] = useState([
@@ -153,6 +156,10 @@ function DesktopContent() {
                         onClose={() => setOpenAWS(false)}
                         />
                 )}
+                {openMyResume && (<Resume 
+                isOpen={openMyResume}
+                onClose={() => setOpenMyResume(false)}
+                />)}
             </div>
         </div>
     );
