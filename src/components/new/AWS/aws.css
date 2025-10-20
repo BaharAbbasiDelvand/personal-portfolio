@@ -1,0 +1,10 @@
+.aws-body { overflow: auto; }         
+.pdf-wrap { height: 75vh; }            
+.pdf-wrap embed,
+.pdf-wrap object,
+.pdf-wrap iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
