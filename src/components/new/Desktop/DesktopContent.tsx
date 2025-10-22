@@ -4,7 +4,7 @@ import Apps from "../Apps/Apps";
 import { AboutMeApp } from "../about-me/AboutMeApp";
 import AWS from "../AWS/AWS";
 import Resume from "../Resume/Resume";
-
+import ContactMe from "../contact-me/ContactMe";
 const GRID_SIZE = 10;
 
 const snapToGrid = (x: number, y: number) => ({
@@ -16,11 +16,13 @@ function DesktopContent() {
     const [openAboutMe, setOpenAboutMe] = useState(false);
     const [openAWS, setOpenAWS] = useState(false);
     const [openMyResume, setOpenMyResume] = useState(false);
+    const [openContactMe, setOpenContactMe] = useState(false);
 
     const handleAppClick = (id: string) => {
         if (id === "about-me") setOpenAboutMe(true);
         if (id === "AWS") setOpenAWS(true);
         if (id==="Resume") setOpenMyResume(true);
+        if(id==="Contact") setOpenContactMe(true);
     };
 
     const [apps, setApps] = useState([
@@ -39,7 +41,7 @@ function DesktopContent() {
         {
             id: "XP",
             iconSrc: "/Experience.png",
-            title: "My Experience",
+            title: "Relevant Experience",
             position: { x: 25, y: 200 },
         },
         {
@@ -160,6 +162,7 @@ function DesktopContent() {
                 isOpen={openMyResume}
                 onClose={() => setOpenMyResume(false)}
                 />)}
+                {openContactMe && (<ContactMe isOpen={openContactMe} onClose={() => setOpenContactMe(false)}/> )}
             </div>
         </div>
     );

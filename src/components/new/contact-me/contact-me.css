@@ -1,0 +1,21 @@
+.contact-me-wrap{
+    background-color: whitesmoke;
+    height: 12vh;
+    width: 100%;
+
+}
+
+.af-window.contact-me-window {
+    background-color: whitesmoke;
+    color: black;
+}
+
+.contact-me-body{
+    height: 100%;
+    display: block;
+    border: 0;
+}
+
+.contact-me-content{
+    color: black;
+}
