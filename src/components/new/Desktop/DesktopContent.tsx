@@ -5,6 +5,8 @@ import { AboutMeApp } from "../about-me/AboutMeApp";
 import AWS from "../AWS/AWS";
 import Resume from "../Resume/Resume";
 import ContactMe from "../contact-me/ContactMe";
+import ProjectsFolder from "../projects-folder/projectsFolder";
+import GAIB from "../GAIB/GAIB";
 const GRID_SIZE = 10;
 
 const snapToGrid = (x: number, y: number) => ({
@@ -17,12 +19,15 @@ function DesktopContent() {
     const [openAWS, setOpenAWS] = useState(false);
     const [openMyResume, setOpenMyResume] = useState(false);
     const [openContactMe, setOpenContactMe] = useState(false);
-
+    const [openFolder, setOpenFolder] = useState(false);
+    const [openGaib, setOpenGaib] = useState(false);
     const handleAppClick = (id: string) => {
         if (id === "about-me") setOpenAboutMe(true);
         if (id === "AWS") setOpenAWS(true);
-        if (id==="Resume") setOpenMyResume(true);
-        if(id==="Contact") setOpenContactMe(true);
+        if (id === "Resume") setOpenMyResume(true);
+        if (id === "Contact") setOpenContactMe(true);
+        if (id === "folder") setOpenFolder(true);
+        if (id === "GAIB") setOpenGaib(true);
     };
 
     const [apps, setApps] = useState([
@@ -68,12 +73,12 @@ function DesktopContent() {
             title: "Contact Me",
             position: { x: 25, y: 520 },
         },
-                {
+        {
             id: "folder",
             iconSrc: "/folder.png",
             title: "Projects",
             position: { x: 25, y: 600 },
-        } //make folder eventually for projects
+        }, //make folder eventually for projects
     ]);
 
     const isOccupied = (x: number, y: number, draggingId: string) => {
@@ -153,16 +158,32 @@ function DesktopContent() {
                     />
                 )}
                 {openAWS && (
-                    <AWS
-                        isOpen={openAWS}
-                        onClose={() => setOpenAWS(false)}
-                        />
+                    <AWS isOpen={openAWS} onClose={() => setOpenAWS(false)} />
                 )}
-                {openMyResume && (<Resume 
-                isOpen={openMyResume}
-                onClose={() => setOpenMyResume(false)}
-                />)}
-                {openContactMe && (<ContactMe isOpen={openContactMe} onClose={() => setOpenContactMe(false)}/> )}
+                {openMyResume && (
+                    <Resume
+                        isOpen={openMyResume}
+                        onClose={() => setOpenMyResume(false)}
+                    />
+                )}
+                {openContactMe && (
+                    <ContactMe
+                        isOpen={openContactMe}
+                        onClose={() => setOpenContactMe(false)}
+                    />
+                )}
+                {openFolder && (
+                    <ProjectsFolder
+                        isOpen={openFolder}
+                        onClose={() => setOpenFolder(false)}
+                    />
+                )}
+                {openGaib && (
+                    <GAIB
+                        isOpen={openGaib}
+                        onClose={() => setOpenGaib(false)}
+                    />
+                )}
             </div>
         </div>
     );
