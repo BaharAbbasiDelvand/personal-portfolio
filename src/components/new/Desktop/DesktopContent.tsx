@@ -78,7 +78,7 @@ function DesktopContent() {
             iconSrc: "/folder.png",
             title: "Projects",
             position: { x: 25, y: 600 },
-        }, //make folder eventually for projects
+        }, 
     ]);
 
     const isOccupied = (x: number, y: number, draggingId: string) => {

@@ -1,3 +1,9 @@
 .af-window.projects-folder-window{
     background-color: aliceblue;
 }
+
+
+.projects-folder-wrap{
+    height: 100%;
+    width: 100%;
+}
