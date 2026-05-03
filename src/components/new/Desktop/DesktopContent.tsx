@@ -7,6 +7,7 @@ import Resume from "../Resume/Resume";
 import ContactMe from "../contact-me/ContactMe";
 import ProjectsFolder from "../projects-folder/projectsFolder";
 import GAIB from "../GAIB/GAIB";
+import WorkExperience from "../work-experience/WorkExperience";
 const GRID_SIZE = 10;
 
 const snapToGrid = (x: number, y: number) => ({
@@ -21,6 +22,7 @@ function DesktopContent() {
     const [openContactMe, setOpenContactMe] = useState(false);
     const [openFolder, setOpenFolder] = useState(false);
     const [openGaib, setOpenGaib] = useState(false);
+    const [openWork, setOpenWork] = useState(false);
     const handleAppClick = (id: string) => {
         if (id === "about-me") setOpenAboutMe(true);
         if (id === "AWS") setOpenAWS(true);
@@ -28,6 +30,7 @@ function DesktopContent() {
         if (id === "Contact") setOpenContactMe(true);
         if (id === "folder") setOpenFolder(true);
         if (id === "GAIB") setOpenGaib(true);
+        if (id === "work") setOpenWork(true);
     };
 
     const [apps, setApps] = useState([
@@ -44,9 +47,9 @@ function DesktopContent() {
             position: { x: 25, y: 120 },
         },
         {
-            id: "XP",
+            id: "work",
             iconSrc: "/Experience.png",
-            title: "Relevant Experience",
+            title: "Relevant Work Experience",
             position: { x: 25, y: 200 },
         },
         {
@@ -182,6 +185,12 @@ function DesktopContent() {
                     <GAIB
                         isOpen={openGaib}
                         onClose={() => setOpenGaib(false)}
+                    />
+                )}
+                {openWork && (
+                    <WorkExperience
+                        isOpen={openWork}
+                        onClose={() => setOpenWork(false)}
                     />
                 )}
             </div>
