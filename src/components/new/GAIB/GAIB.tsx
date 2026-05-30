@@ -18,25 +18,65 @@ export const GAIB: React.FC<GaibProps> = ({ isOpen, onClose }) => {
                 id: "gaib-intro",
                 label: "GAIB",
                 content: (
-                    <div className="gaib-slide-content">
-                        <h2 className="gaib-h2">GAIB</h2>
-                        <p className="gaib-p">
-                            GAIB is your AI test generator inside VSCode — it
-                            analyzes commits, infers intent, and produces
-                            targeted unit tests in seconds to speed up feedback
-                            and improve reliability.
-                        </p>
+                    <div className="gaib-slide-content gaib-hero">
+                        <div className="gaib-hero-glow" />
+                        <div className="gaib-hero-inner">
+                            <span className="gaib-badge">
+                                <span className="gaib-badge-dot" />
+                                VS Code Extension
+                            </span>
+                            <h2 className="gaib-title">GAIB</h2>
+                            <p className="gaib-tagline">
+                                Your AI test generator, right inside the editor.
+                            </p>
+                            <p className="gaib-lede">
+                                GAIB analyzes your commits, infers intent, and
+                                writes targeted unit tests in seconds — tighter
+                                feedback loops, more reliable code.
+                            </p>
+                            <div className="gaib-features">
+                                <div className="gaib-feature">
+                                    <div className="gaib-feature-icon">⎇</div>
+                                    <div className="gaib-feature-title">
+                                        Reads your commits
+                                    </div>
+                                    <div className="gaib-feature-text">
+                                        Diffs become context — no manual setup.
+                                    </div>
+                                </div>
+                                <div className="gaib-feature">
+                                    <div className="gaib-feature-icon">✦</div>
+                                    <div className="gaib-feature-title">
+                                        Infers intent
+                                    </div>
+                                    <div className="gaib-feature-text">
+                                        Understands what the change is meant to
+                                        do.
+                                    </div>
+                                </div>
+                                <div className="gaib-feature">
+                                    <div className="gaib-feature-icon">⚡</div>
+                                    <div className="gaib-feature-title">
+                                        Tests in seconds
+                                    </div>
+                                    <div className="gaib-feature-text">
+                                        Targeted unit tests, generated on the
+                                        fly.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
                 ),
             },
             {
                 id: "gaib-poster",
                 label: "Poster",
                 content: (
-                    <div className="gaib-slide-content">
-                        <h2 className="gaib-h2">His poster!</h2>
-                        <div className="gaib-media-wrap">
+                    <div className="gaib-slide-content gaib-poster-slide">
+                        <span className="gaib-eyebrow">The launch poster</span>
+                        <h2 className="gaib-h2">GAIB, on display</h2>
+                        <div className="gaib-media-frame">
                             <img
                                 src="/GAIBPoster.jpg"
                                 alt="GAIB Poster"
@@ -50,15 +90,37 @@ export const GAIB: React.FC<GaibProps> = ({ isOpen, onClose }) => {
                 id: "gaib-market",
                 label: "Marketplace",
                 content: (
-                    <div className="gaib-slide-content">
-                        <h2 className="gaib-h2">
-                            Get it on VSCode Marketplace
-                        </h2>
+                    <div className="gaib-slide-content gaib-cta-slide">
+                        <span className="gaib-eyebrow">Get started</span>
+                        <h2 className="gaib-h2">Install from the Marketplace</h2>
                         <p className="gaib-p">
-                            Install GAIB from the Visual Studio Code Marketplace
-                            to start generating tests from commit context.
-                            Includes quickstart instructions and changelogs.
+                            Grab GAIB from the Visual Studio Code Marketplace and
+                            start generating tests from commit context —
+                            quickstart and changelogs included.
                         </p>
+                        <ol className="gaib-steps">
+                            <li>
+                                <span className="gaib-step-num">1</span>
+                                Open <strong>Extensions</strong> in VS Code
+                                (⇧⌘X).
+                            </li>
+                            <li>
+                                <span className="gaib-step-num">2</span>
+                                Search <strong>“GAIB”</strong> and hit Install.
+                            </li>
+                            <li>
+                                <span className="gaib-step-num">3</span>
+                                Make a commit — let GAIB write the tests.
+                            </li>
+                        </ol>
+                        <a
+                            className="gaib-install-btn"
+                            href="https://marketplace.visualstudio.com/items?itemName=GAIB.genai"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View on Marketplace →
+                        </a>
                     </div>
                 ),
             },
