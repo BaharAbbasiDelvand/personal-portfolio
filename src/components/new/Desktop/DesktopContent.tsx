@@ -11,8 +11,8 @@ import WorkExperience from "../work-experience/WorkExperience";
 const GRID_SIZE = 10;
 
 const snapToGrid = (x: number, y: number) => ({
-    x: (x / GRID_SIZE) * GRID_SIZE,
-    y: (y / GRID_SIZE) * GRID_SIZE,
+    x: Math.round(x / GRID_SIZE) * GRID_SIZE,
+    y: Math.round(y / GRID_SIZE) * GRID_SIZE,
 });
 
 function DesktopContent() {
@@ -95,13 +95,15 @@ function DesktopContent() {
     const containerRef = useRef<HTMLDivElement | null>(null);
 
     const handleSelect = (id: string, additive: boolean) => {
-        setSelectedIds((prev) =>
-            additive
-                ? prev.includes(id)
+        setSelectedIds((prev) => {
+            if (additive) {
+                return prev.includes(id)
                     ? prev.filter((p) => p !== id)
-                    : [...prev, id]
-                : [id]
-        );
+                    : [...prev, id];
+            }
+            if (prev.includes(id)) return prev;
+            return [id];
+        });
     };
 
     const onDesktopMouseDown = (e: React.MouseEvent) => {
@@ -186,25 +188,34 @@ function DesktopContent() {
         return { x, y };
     };
 
-    const [, dropRef] = useDrop(() => ({
-        accept: "APP_ICON",
-        drop: (item: { id: string }, monitor) => {
-            const offset = monitor.getClientOffset();
-            if (!offset) return;
+    const [, dropRef] = useDrop(
+        () => ({
+            accept: "APP_ICON",
+            drop: (item: { id: string }, monitor) => {
+                const diff = monitor.getDifferenceFromInitialOffset();
+                if (!diff) return;
 
-            const snapped = snapToGrid(offset.x, offset.y);
+                const movingIds = selectedIds.includes(item.id)
+                    ? selectedIds
+                    : [item.id];
 
-            const nextFree = isOccupied(snapped.x, snapped.y, item.id)
-                ? findNextFreeSpot(snapped.x, snapped.y, item.id)
-                : snapped;
-
-            setApps((prev) =>
-                prev.map((app) =>
-                    app.id === item.id ? { ...app, position: nextFree } : app
-                )
-            );
-        },
-    }));
+                setApps((prev) =>
+                    prev.map((app) =>
+                        movingIds.includes(app.id)
+                            ? {
+                                  ...app,
+                                  position: snapToGrid(
+                                      app.position.x + diff.x,
+                                      app.position.y + diff.y
+                                  ),
+                              }
+                            : app
+                    )
+                );
+            },
+        }),
+        [selectedIds]
+    );
 
     return (
         <div
