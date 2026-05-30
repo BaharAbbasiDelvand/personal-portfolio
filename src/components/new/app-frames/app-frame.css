@@ -50,6 +50,11 @@
     padding: 0 10px;
     color: var(--af-text);
     border-bottom: 1px solid var(--af-divider);
+    cursor: grab;
+    user-select: none;
+}
+.af-titlebar:active {
+    cursor: grabbing;
 }
 .af-traffic {
     display: flex;
@@ -97,4 +102,15 @@
     height: 100%;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+}
+
+.af-snap-preview {
+    position: fixed;
+    z-index: 49;
+    background: rgba(99, 179, 237, 0.18);
+    border: 2px solid rgba(99, 179, 237, 0.55);
+    border-radius: 10px;
+    pointer-events: none;
+    transition: left 80ms ease, top 80ms ease, width 80ms ease, height 80ms ease;
+    backdrop-filter: blur(2px);
 }

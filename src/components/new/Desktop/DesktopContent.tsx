@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useDrop } from "react-dnd";
 import Apps from "../Apps/Apps";
 import { AboutMeApp } from "../about-me/AboutMeApp";
@@ -84,6 +84,72 @@ function DesktopContent() {
         }, 
     ]);
 
+    const [selectedIds, setSelectedIds] = useState<string[]>([]);
+    const [marquee, setMarquee] = useState<{
+        x: number;
+        y: number;
+        w: number;
+        h: number;
+    } | null>(null);
+    const marqueeStart = useRef<{ x: number; y: number } | null>(null);
+    const containerRef = useRef<HTMLDivElement | null>(null);
+
+    const handleSelect = (id: string, additive: boolean) => {
+        setSelectedIds((prev) =>
+            additive
+                ? prev.includes(id)
+                    ? prev.filter((p) => p !== id)
+                    : [...prev, id]
+                : [id]
+        );
+    };
+
+    const onDesktopMouseDown = (e: React.MouseEvent) => {
+        if (e.button !== 0) return;
+        const start = { x: e.clientX, y: e.clientY };
+        marqueeStart.current = start;
+        if (!e.shiftKey && !e.metaKey) setSelectedIds([]);
+
+        const onMove = (ev: MouseEvent) => {
+            if (!marqueeStart.current) return;
+            const s = marqueeStart.current;
+            const rect = {
+                x: Math.min(s.x, ev.clientX),
+                y: Math.min(s.y, ev.clientY),
+                w: Math.abs(ev.clientX - s.x),
+                h: Math.abs(ev.clientY - s.y),
+            };
+            setMarquee(rect);
+
+            const hits: string[] = [];
+            containerRef.current
+                ?.querySelectorAll<HTMLElement>("[data-app-id]")
+                .forEach((el) => {
+                    const b = el.getBoundingClientRect();
+                    const intersects =
+                        b.left < rect.x + rect.w &&
+                        b.right > rect.x &&
+                        b.top < rect.y + rect.h &&
+                        b.bottom > rect.y;
+                    if (intersects) {
+                        const id = el.getAttribute("data-app-id");
+                        if (id) hits.push(id);
+                    }
+                });
+            setSelectedIds(hits);
+        };
+
+        const onUp = () => {
+            marqueeStart.current = null;
+            setMarquee(null);
+            window.removeEventListener("mousemove", onMove);
+            window.removeEventListener("mouseup", onUp);
+        };
+
+        window.addEventListener("mousemove", onMove);
+        window.addEventListener("mouseup", onUp);
+    };
+
     const isOccupied = (x: number, y: number, draggingId: string) => {
         return apps.some(
             (app) =>
@@ -141,7 +207,14 @@ function DesktopContent() {
     }));
 
     return (
-        <div className="Desktop-container" ref={dropRef}>
+        <div
+            className="Desktop-container"
+            ref={(node) => {
+                dropRef(node);
+                containerRef.current = node;
+            }}
+            onMouseDown={onDesktopMouseDown}
+        >
             <div className="wallpaper" />
             <div>
                 {apps.map((app) => (
@@ -152,8 +225,21 @@ function DesktopContent() {
                         title={app.title}
                         onClick={() => handleAppClick(app.id)}
                         position={app.position}
+                        selected={selectedIds.includes(app.id)}
+                        onSelect={handleSelect}
                     />
                 ))}
+                {marquee && (
+                    <div
+                        className="marquee-selection"
+                        style={{
+                            left: marquee.x,
+                            top: marquee.y,
+                            width: marquee.w,
+                            height: marquee.h,
+                        }}
+                    />
+                )}
                 {openAboutMe && (
                     <AboutMeApp
                         isOpen={openAboutMe}

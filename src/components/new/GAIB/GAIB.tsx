@@ -27,6 +27,7 @@ export const GAIB: React.FC<GaibProps> = ({ isOpen, onClose }) => {
                             and improve reliability.
                         </p>
                     </div>
+                    
                 ),
             },
             {

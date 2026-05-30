@@ -18,6 +18,16 @@
   background-color: rgba(255, 255, 255, 0.15);
 }
 
+.apps-wrapper.apps-selected {
+  background-color: rgba(0, 122, 255, 0.35);
+}
+
+.apps-wrapper.apps-selected .apps-title {
+  background-color: rgba(0, 122, 255, 0.85);
+  border-radius: 4px;
+  padding: 0 4px;
+}
+
 .apps-icon {
     width: 35px;
     height: 35px;
