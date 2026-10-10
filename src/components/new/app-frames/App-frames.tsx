@@ -7,6 +7,8 @@ type SnapRect = { x: number; y: number; w: number; h: number };
 
 const EDGE = 80;
 const CORNER = 120;
+const TOP_SNAP = 10;
+const PHONE_MAX = 640;
 
 const GRID_SIZE = 10;
 const CASCADE = 30;
@@ -27,9 +29,10 @@ function gridStartPos() {
 function getSnapZone(mx: number, my: number): SnapZone {
     const W = window.innerWidth;
     const H = window.innerHeight;
+    if (W <= PHONE_MAX) return null;
     const nearLeft = mx < EDGE;
     const nearRight = mx > W - EDGE;
-    const nearTop = my < EDGE;
+    const nearTop = my < TOP_SNAP;
     const nearBottom = my > H - EDGE;
 
     if (nearLeft && my < CORNER) return "top-left";

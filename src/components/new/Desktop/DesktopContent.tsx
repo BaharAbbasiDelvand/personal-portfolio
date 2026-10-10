@@ -8,6 +8,7 @@ import ContactMe from "../contact-me/ContactMe";
 import ProjectsFolder from "../projects-folder/projectsFolder";
 import GAIB from "../GAIB/GAIB";
 import WorkExperience from "../work-experience/WorkExperience";
+import SkillsApp from "../skills-app/SkillsApp";
 const GRID_SIZE = 10;
 
 const snapToGrid = (x: number, y: number) => ({
@@ -23,8 +24,10 @@ function DesktopContent() {
     const [openFolder, setOpenFolder] = useState(false);
     const [openGaib, setOpenGaib] = useState(false);
     const [openWork, setOpenWork] = useState(false);
+    const [openSkills, setOpenSkills] = useState(false);
     const handleAppClick = (id: string) => {
         if (id === "about-me") setOpenAboutMe(true);
+        if (id === "Skills") setOpenSkills(true);
         if (id === "AWS") setOpenAWS(true);
         if (id === "Resume") setOpenMyResume(true);
         if (id === "Contact") setOpenContactMe(true);
@@ -288,6 +291,12 @@ function DesktopContent() {
                     <WorkExperience
                         isOpen={openWork}
                         onClose={() => setOpenWork(false)}
+                    />
+                )}
+                {openSkills && (
+                    <SkillsApp
+                        isOpen={openSkills}
+                        onClose={() => setOpenSkills(false)}
                     />
                 )}
             </div>
