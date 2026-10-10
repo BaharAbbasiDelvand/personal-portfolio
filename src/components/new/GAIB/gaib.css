@@ -1,142 +1,137 @@
 .af-window.gaib-window {
-    background-color: #0b1020;
-    color: #e8edf6;
-}
-
-.gaib-carousel {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
     background: radial-gradient(
-            1200px 500px at 20% -10%,
-            rgba(99, 102, 241, 0.25),
+            1200px 500px at 50% -10%,
+            rgba(124, 58, 237, 0.28),
             transparent 60%
         ),
-        radial-gradient(
-            1000px 500px at 100% 120%,
-            rgba(56, 189, 248, 0.2),
-            transparent 55%
-        ),
-        #0b1020;
+        linear-gradient(165deg, #0b1020 0%, #141b36 55%, #0d1326 100%) !important;
+    color: #e2e8f0;
 }
 
-.gaib-track {
-    display: flex;
-    width: 100%;
+.gaib-body {
     height: 100%;
-    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: transform;
+    padding: 0;
+    overflow: auto;
 }
 
-.gaib-slide {
-    min-width: 100%;
-    box-sizing: border-box;
-    padding: 44px 64px 72px;
+.gaib-page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 44px 32px 48px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    overflow-y: auto;
-}
-
-.gaib-slide-content {
-    width: 100%;
-    max-width: 760px;
-    margin: auto 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.gaib-eyebrow {
-    display: inline-block;
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #8ea2c6;
-    margin-bottom: 10px;
-}
-
-.gaib-h2 {
-    margin: 0 0 16px 0;
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: #f4f7fc;
-}
-
-.gaib-p {
-    margin: 0;
-    line-height: 1.7;
-    color: #c4cfe3;
-    font-size: 1rem;
+    gap: 44px;
 }
 
 .gaib-hero {
-    position: relative;
-}
-
-.gaib-hero-glow {
-    position: absolute;
-    inset: -40% 10% auto 10%;
-    height: 320px;
-    background: radial-gradient(
-        closest-side,
-        rgba(129, 140, 248, 0.45),
-        transparent
-    );
-    filter: blur(20px);
-    pointer-events: none;
-}
-
-.gaib-hero-inner {
-    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .gaib-badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 6px 12px;
+    gap: 7px;
+    padding: 6px 14px;
     border-radius: 999px;
-    background: rgba(129, 140, 248, 0.12);
-    border: 1px solid rgba(129, 140, 248, 0.35);
-    color: #c7d0ff;
-    font-size: 0.78rem;
+    font-size: 12.5px;
     font-weight: 600;
-}
-
-.gaib-badge-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #7dd3fc;
-    box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.25);
+    color: #c7d2fe;
+    background: rgba(129, 140, 248, 0.14);
+    border: 1px solid rgba(129, 140, 248, 0.3);
 }
 
 .gaib-title {
-    margin: 18px 0 6px;
-    font-size: 3.4rem;
+    margin: 18px 0 0 0;
+    font-size: 64px;
     font-weight: 800;
-    letter-spacing: -0.03em;
-    background: linear-gradient(120deg, #ffffff 10%, #a5b4fc 60%, #7dd3fc 100%);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 45%, #c084fc 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
 .gaib-tagline {
-    margin: 0 0 14px;
-    font-size: 1.15rem;
+    margin: 16px 0 0 0;
+    font-size: 17px;
     font-weight: 600;
-    color: #e8edf6;
+    color: #e2e8f0;
 }
 
 .gaib-lede {
-    margin: 0 0 28px;
-    max-width: 620px;
+    margin: 14px 0 0 0;
+    font-size: 14.5px;
     line-height: 1.7;
-    color: #b9c4db;
+    color: #94a3b8;
+    max-width: 52ch;
+}
+
+.gaib-install {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 26px;
+    padding: 12px 22px;
+    border-radius: 11px;
+    font-size: 14px;
+    font-weight: 650;
+    color: #ffffff;
+    text-decoration: none;
+    background: linear-gradient(135deg, #6366f1, #7c3aed);
+    box-shadow: 0 10px 26px rgba(99, 102, 241, 0.35);
+    transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.gaib-install:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(124, 58, 237, 0.45);
+}
+
+.gaib-scroll-cue {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    margin-top: 30px;
+    padding: 6px 10px;
+    border: none;
+    background: transparent;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: color 140ms ease;
+    animation: gaib-bob 1.8s ease-in-out infinite;
+}
+
+.gaib-scroll-cue:hover {
+    color: #c7d2fe;
+}
+
+.gaib-scroll-cue-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+@keyframes gaib-bob {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(5px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gaib-scroll-cue {
+        animation: none;
+    }
 }
 
 .gaib-features {
@@ -146,86 +141,55 @@
 }
 
 .gaib-feature {
+    text-align: left;
+    padding: 18px;
+    border-radius: 14px;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
-    padding: 16px;
-    transition: transform 0.2s ease, border-color 0.2s ease,
-        background 0.2s ease;
-}
-
-.gaib-feature:hover {
-    transform: translateY(-3px);
-    border-color: rgba(129, 140, 248, 0.45);
-    background: rgba(129, 140, 248, 0.08);
 }
 
 .gaib-feature-icon {
     display: grid;
     place-items: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #6366f1, #38bdf8);
-    color: #fff;
-    font-size: 18px;
-    margin-bottom: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+    color: #a5b4fc;
+    background: rgba(129, 140, 248, 0.16);
+    margin-bottom: 14px;
 }
 
 .gaib-feature-title {
+    margin: 0 0 6px 0;
+    font-size: 15px;
     font-weight: 700;
-    font-size: 0.98rem;
-    margin-bottom: 4px;
-    color: #f1f4fb;
+    color: #f1f5f9;
 }
 
 .gaib-feature-text {
-    font-size: 0.86rem;
-    line-height: 1.5;
-    color: #9fadc8;
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #94a3b8;
 }
 
-.gaib-poster-slide {
-    text-align: center;
-    align-items: center;
+.gaib-section {
+    text-align: left;
 }
 
-.gaib-media-frame {
-    margin-top: 18px;
-    display: inline-block;
-    padding: 10px;
-    border-radius: 18px;
-    background: linear-gradient(
-        145deg,
-        rgba(255, 255, 255, 0.12),
-        rgba(255, 255, 255, 0.03)
-    );
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
-}
-
-.gaib-media {
-    display: block;
-    max-width: 100%;
-    max-height: 60vh;
-    height: auto;
-    border-radius: 10px;
-}
-
-.gaib-cta-slide {
-    max-width: 600px;
-    align-items: flex-start;
-}
-
-.gaib-steps {
-    width: 100%;
+.gaib-section-title {
+    margin: 0 0 16px 0;
+    font-size: 20px;
+    font-weight: 750;
+    color: #f1f5f9;
 }
 
 .gaib-steps {
     list-style: none;
-    margin: 24px 0 28px;
+    margin: 0;
     padding: 0;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 12px;
 }
 
@@ -236,104 +200,70 @@
     padding: 14px 16px;
     border-radius: 12px;
     background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #d4ddee;
-    font-size: 0.95rem;
-}
-
-.gaib-steps strong {
-    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .gaib-step-num {
-    flex: none;
     display: grid;
     place-items: center;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #6366f1, #38bdf8);
-    color: #fff;
-    font-size: 0.85rem;
-    font-weight: 700;
-}
-
-.gaib-install-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 22px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #6366f1, #38bdf8);
-    color: #fff;
-    font-weight: 700;
-    font-size: 0.98rem;
-    text-decoration: none;
-    box-shadow: 0 12px 30px rgba(56, 189, 248, 0.35);
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
-}
-
-.gaib-install-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 18px 40px rgba(99, 102, 241, 0.45);
-}
-
-.gaib-control {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 42px;
-    width: 42px;
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(15, 20, 38, 0.55);
-    backdrop-filter: blur(8px);
-    color: #fff;
-    font-size: 22px;
-    line-height: 40px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #c7d2fe;
+    background: rgba(129, 140, 248, 0.18);
+}
+
+.gaib-step-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #cbd5e1;
+}
+
+.gaib-step-text strong {
+    color: #e2e8f0;
+    font-weight: 700;
+}
+
+.gaib-poster-frame {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.gaib-poster-img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.gaib-cta {
     text-align: center;
-    cursor: pointer;
-    user-select: none;
-    transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.gaib-control:hover:not(:disabled) {
-    background: rgba(99, 102, 241, 0.5);
-}
-
-.gaib-control:disabled {
-    opacity: 0.25;
-    cursor: default;
-}
-
-.gaib-prev {
-    left: 12px;
-}
-.gaib-next {
-    right: 12px;
-}
-
-.gaib-dots {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 16px;
     display: flex;
-    gap: 8px;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 36px 24px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.gaib-dot {
-    height: 8px;
-    width: 8px;
-    border-radius: 999px;
-    border: none;
-    background: rgba(255, 255, 255, 0.28);
-    cursor: pointer;
-    transition: width 0.25s ease, background 0.25s ease;
+.gaib-cta-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 750;
+    color: #f1f5f9;
+    max-width: 24ch;
 }
 
-.gaib-dot.is-active {
-    width: 22px;
-    background: linear-gradient(135deg, #818cf8, #38bdf8);
+@media (max-width: 620px) {
+    .gaib-features {
+        grid-template-columns: 1fr;
+    }
+    .gaib-title {
+        font-size: 52px;
+    }
 }
