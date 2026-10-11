@@ -11,7 +11,11 @@ import type { LucideIcon } from "lucide-react";
 import { AppFrame } from "../app-frames/App-frames";
 import "./gaib.css";
 
-type GaibProps = { onClose: () => void; isOpen: boolean };
+type GaibProps = {
+    onClose: () => void;
+    isOpen: boolean;
+    focusToken?: number;
+};
 
 const MARKETPLACE =
     "https://marketplace.visualstudio.com/items?itemName=GAIB.genai";
@@ -46,7 +50,7 @@ const steps: React.ReactNode[] = [
     <>Make a commit — let GAIB write the tests.</>,
 ];
 
-export const GAIB: React.FC<GaibProps> = ({ isOpen, onClose }) => {
+export const GAIB: React.FC<GaibProps> = ({ isOpen, onClose, focusToken }) => {
     const featuresRef = useRef<HTMLElement | null>(null);
 
     const scrollToFeatures = () => {
@@ -60,6 +64,7 @@ export const GAIB: React.FC<GaibProps> = ({ isOpen, onClose }) => {
         <AppFrame
             isOpen={isOpen}
             onClose={onClose}
+            focusToken={focusToken}
             title="GAIB"
             overlay
             contentClassName="gaib-body"

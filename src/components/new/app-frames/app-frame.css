@@ -20,6 +20,10 @@
 }
 .af-overlay.af-overlay-none {
     background: transparent;
+    pointer-events: none;
+}
+.af-overlay.af-overlay-none .af-window {
+    pointer-events: auto;
 }
 
 .af-window {

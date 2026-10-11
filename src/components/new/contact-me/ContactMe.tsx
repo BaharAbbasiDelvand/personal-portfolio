@@ -12,7 +12,11 @@ const EMAIL = "baharabbasidelvand@gmail.com";
 const LINKEDIN = "https://www.linkedin.com/in/baharabbasidelvand/";
 const GITHUB = "https://github.com/BaharAbbasiDelvand";
 
-type ContactMeProps = { isOpen: boolean; onClose: () => void };
+type ContactMeProps = {
+    isOpen: boolean;
+    onClose: () => void;
+    focusToken?: number;
+};
 
 type FormState = { name: string; email: string; message: string };
 
@@ -48,7 +52,11 @@ const linkCards: LinkCard[] = [
     },
 ];
 
-export const ContactMe: React.FC<ContactMeProps> = ({ isOpen, onClose }) => {
+export const ContactMe: React.FC<ContactMeProps> = ({
+    isOpen,
+    onClose,
+    focusToken,
+}) => {
     const [form, setForm] = useState<FormState>(initialForm);
     const [status, setStatus] = useState<SendStatus>("idle");
     const [copied, setCopied] = useState(false);
@@ -120,6 +128,7 @@ export const ContactMe: React.FC<ContactMeProps> = ({ isOpen, onClose }) => {
         <AppFrame
             isOpen={isOpen}
             onClose={onClose}
+            focusToken={focusToken}
             title="Contact Me"
             overlay
             windowClassName="contact-me-window"

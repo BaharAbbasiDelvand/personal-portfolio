@@ -1,9 +1,137 @@
-.af-window.projects-folder-window{
-    background-color: aliceblue;
+.af-window.finder-window {
+    background: linear-gradient(180deg, #eef2ff, #e0f2fe 85%) !important;
 }
 
-
-.projects-folder-wrap{
+.finder-body {
     height: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+
+.finder-layout {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    height: 100%;
+    min-height: 0;
+}
+
+.finder-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 16px 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(15, 23, 42, 0.08);
+    overflow: auto;
+    backdrop-filter: blur(6px);
+}
+
+.finder-sidebar-head {
+    margin: 2px 8px 8px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #94a3b8;
+}
+
+.finder-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
     width: 100%;
+    padding: 7px 9px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #334155;
+    font-size: 13.5px;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: background 120ms ease, color 120ms ease;
+}
+
+.finder-nav-item:hover {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.finder-nav-item.is-active {
+    background: rgba(79, 70, 229, 0.14);
+    color: #4338ca;
+    font-weight: 650;
+}
+
+.finder-nav-icon {
+    display: grid;
+    place-items: center;
+    color: #6366f1;
+}
+
+.finder-nav-item.is-active .finder-nav-icon {
+    color: #4338ca;
+}
+
+.finder-nav-label {
+    flex: 1;
+    min-width: 0;
+}
+
+.finder-nav-count {
+    font-size: 11px;
+    font-weight: 600;
+    color: #94a3b8;
+    background: rgba(148, 163, 184, 0.16);
+    border-radius: 999px;
+    padding: 1px 7px;
+}
+
+.finder-nav-item.is-active .finder-nav-count {
+    color: #4f46e5;
+    background: rgba(79, 70, 229, 0.16);
+}
+
+.finder-main {
+    min-height: 0;
+    overflow: auto;
+}
+
+.finder-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+    gap: 10px;
+    align-content: start;
+    padding: 22px;
+    min-height: 100%;
+}
+
+.app-container-folder {
+    display: flex;
+    justify-content: center;
+}
+
+.finder-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 100%;
+    min-height: 240px;
+    text-align: center;
+    padding: 32px;
+}
+
+.finder-empty-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #334155;
+}
+
+.finder-empty-text {
+    margin: 0;
+    font-size: 13.5px;
+    color: #64748b;
+    max-width: 34ch;
 }

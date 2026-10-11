@@ -152,9 +152,17 @@ const categories: Category[] = [
     },
 ];
 
-type SkillsAppProps = { isOpen: boolean; onClose: () => void };
+type SkillsAppProps = {
+    isOpen: boolean;
+    onClose: () => void;
+    focusToken?: number;
+};
 
-export const SkillsApp: React.FC<SkillsAppProps> = ({ isOpen, onClose }) => {
+export const SkillsApp: React.FC<SkillsAppProps> = ({
+    isOpen,
+    onClose,
+    focusToken,
+}) => {
     const [activeId, setActiveId] = useState(categories[0].id);
     const activeCategory =
         categories.find((category) => category.id === activeId) ?? categories[0];
@@ -163,6 +171,7 @@ export const SkillsApp: React.FC<SkillsAppProps> = ({ isOpen, onClose }) => {
         <AppFrame
             isOpen={isOpen}
             onClose={onClose}
+            focusToken={focusToken}
             title="Skills"
             overlay
             windowClassName="skills-window"

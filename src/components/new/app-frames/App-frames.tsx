@@ -13,6 +13,7 @@ const PHONE_MAX = 640;
 const GRID_SIZE = 10;
 const CASCADE = 30;
 let openCount = 0;
+let zTop = 50;
 
 const snap = (n: number) => Math.round(n / GRID_SIZE) * GRID_SIZE;
 
@@ -68,6 +69,7 @@ type AppFrameProps = {
     overlay?: boolean;
     windowClassName?: string;
     contentClassName?: string;
+    focusToken?: number;
 };
 
 export function AppFrame({
@@ -78,10 +80,17 @@ export function AppFrame({
     overlay = true,
     windowClassName = "",
     contentClassName = "",
+    focusToken,
 }: AppFrameProps) {
     const [isMin, setIsMin] = useState(false);
     const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+    const [zIndex, setZIndex] = useState(50);
     const didInit = useRef(false);
+
+    const bringToFront = useCallback(() => {
+        zTop += 1;
+        setZIndex(zTop);
+    }, []);
     const [snapped, setSnapped] = useState<SnapZone>(null);
     const [snapPreview, setSnapPreview] = useState<SnapZone>(null);
     const dragging = useRef(false);
@@ -133,6 +142,8 @@ export function AppFrame({
             if (!didInit.current) {
                 didInit.current = true;
                 setPos(gridStartPos());
+                zTop += 1;
+                setZIndex(zTop);
             }
         } else {
             didInit.current = false;
@@ -141,6 +152,13 @@ export function AppFrame({
             setSnapPreview(null);
         }
     }, [isOpen]);
+
+    useEffect(() => {
+        if (isOpen && focusToken !== undefined) {
+            zTop += 1;
+            setZIndex(zTop);
+        }
+    }, [focusToken, isOpen]);
 
     if (!isOpen) return null;
 
@@ -163,10 +181,16 @@ export function AppFrame({
                     style={{ left: pr.x, top: pr.y, width: pr.w, height: pr.h }}
                 />
             )}
-            <div className={`af-overlay ${overlay && !isFloating ? "" : "af-overlay-none"}`}>
+            <div
+                className={`af-overlay ${
+                    overlay && !isFloating ? "" : "af-overlay-none"
+                }`}
+                style={{ zIndex }}
+            >
                 <div
                     className={`af-window ${isMin ? "af-min" : ""} ${windowClassName}`}
                     style={windowStyle}
+                    onMouseDown={bringToFront}
                 >
                     <div className="af-titlebar" onMouseDown={onTitlebarMouseDown}>
                         <div className="af-traffic">

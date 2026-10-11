@@ -6,10 +6,20 @@ import AWS from "../AWS/AWS";
 import Resume from "../Resume/Resume";
 import ContactMe from "../contact-me/ContactMe";
 import ProjectsFolder from "../projects-folder/projectsFolder";
+import type { FinderView } from "../projects-folder/projectsFolder";
 import GAIB from "../GAIB/GAIB";
 import WorkExperience from "../work-experience/WorkExperience";
 import SkillsApp from "../skills-app/SkillsApp";
+import FigmaClone from "../figma-clone/FigmaClone";
 const GRID_SIZE = 10;
+
+type AppItem = {
+    id: string;
+    iconSrc: string;
+    title: string;
+    position: { x: number; y: number };
+    location: "desktop" | "folder" | "trash";
+};
 
 const snapToGrid = (x: number, y: number) => ({
     x: Math.round(x / GRID_SIZE) * GRID_SIZE,
@@ -22,70 +32,133 @@ function DesktopContent() {
     const [openMyResume, setOpenMyResume] = useState(false);
     const [openContactMe, setOpenContactMe] = useState(false);
     const [openFolder, setOpenFolder] = useState(false);
+    const [finderView, setFinderView] = useState<FinderView>("folder");
     const [openGaib, setOpenGaib] = useState(false);
     const [openWork, setOpenWork] = useState(false);
     const [openSkills, setOpenSkills] = useState(false);
+    const [openFigma, setOpenFigma] = useState(false);
+    const [focusTokens, setFocusTokens] = useState<Record<string, number>>({});
     const handleAppClick = (id: string) => {
+        setFocusTokens((prev) => ({ ...prev, [id]: (prev[id] ?? 0) + 1 }));
         if (id === "about-me") setOpenAboutMe(true);
+        if (id === "figma") setOpenFigma(true);
         if (id === "Skills") setOpenSkills(true);
         if (id === "AWS") setOpenAWS(true);
         if (id === "Resume") setOpenMyResume(true);
         if (id === "Contact") setOpenContactMe(true);
-        if (id === "folder") setOpenFolder(true);
+        if (id === "folder") {
+            setFinderView("folder");
+            setOpenFolder(true);
+        }
+        if (id === "trash") {
+            setFinderView("trash");
+            setOpenFolder(true);
+        }
         if (id === "GAIB") setOpenGaib(true);
         if (id === "work") setOpenWork(true);
     };
 
-    const [apps, setApps] = useState([
+    const handleDesktopOpen = (id: string) => {
+        const ids =
+            selectedIds.includes(id) && selectedIds.length > 1
+                ? selectedIds
+                : [id];
+        ids.forEach((appId) => handleAppClick(appId));
+    };
+
+    const [apps, setApps] = useState<AppItem[]>([
         {
             id: "about-me",
             iconSrc: "/Banner.png",
             title: "About Me",
             position: { x: 25, y: 40 },
+            location: "desktop",
         },
         {
             id: "Skills",
             iconSrc: "/Skills.png",
             title: "Skills",
             position: { x: 25, y: 120 },
+            location: "desktop",
         },
         {
             id: "work",
             iconSrc: "/Experience.png",
             title: "Relevant Work Experience",
             position: { x: 25, y: 200 },
+            location: "desktop",
         },
         {
             id: "GAIB",
             iconSrc: "/GAIB.png",
             title: "GAIB",
             position: { x: 25, y: 280 },
+            location: "folder",
         },
         {
             id: "AWS",
             iconSrc: "/AWS.png",
             title: "AWS Certification",
             position: { x: 25, y: 360 },
+            location: "desktop",
         },
         {
             id: "Resume",
             iconSrc: "/Resume.png",
             title: "My Resume",
             position: { x: 25, y: 440 },
+            location: "desktop",
         },
         {
             id: "Contact",
             iconSrc: "/ContactMe.png",
             title: "Contact Me",
             position: { x: 25, y: 520 },
+            location: "desktop",
         },
         {
             id: "folder",
             iconSrc: "/folder.png",
             title: "Projects",
             position: { x: 25, y: 600 },
-        }, 
+            location: "desktop",
+        },
+        {
+            id: "figma",
+            iconSrc: "/figma.svg",
+            title: "Figma Clone",
+            position: { x: 25, y: 680 },
+            location: "folder",
+        },
+        {
+            id: "trash",
+            iconSrc: "/trash.svg",
+            title: "Trash",
+            position: { x: 25, y: 680 },
+            location: "desktop",
+        },
     ]);
+
+    const moveSelectedTo = (
+        draggedId: string,
+        destination: "folder" | "trash"
+    ) => {
+        const movingIds = (
+            selectedIds.includes(draggedId) ? selectedIds : [draggedId]
+        ).filter((id) => id !== "folder" && id !== "trash");
+        if (movingIds.length === 0) return;
+        setApps((prev) =>
+            prev.map((app) =>
+                movingIds.includes(app.id)
+                    ? { ...app, location: destination }
+                    : app
+            )
+        );
+        setSelectedIds([]);
+    };
+
+    const moveToFolder = (draggedId: string) => moveSelectedTo(draggedId, "folder");
+    const moveToTrash = (draggedId: string) => moveSelectedTo(draggedId, "trash");
 
     const [selectedIds, setSelectedIds] = useState<string[]>([]);
     const [marquee, setMarquee] = useState<{
@@ -195,6 +268,25 @@ function DesktopContent() {
         () => ({
             accept: "APP_ICON",
             drop: (item: { id: string }, monitor) => {
+                if (monitor.didDrop()) return;
+
+                const dragged = apps.find((app) => app.id === item.id);
+
+                if (dragged && dragged.location !== "desktop") {
+                    const clientOffset = monitor.getClientOffset();
+                    const position = clientOffset
+                        ? snapToGrid(clientOffset.x - 30, clientOffset.y - 30)
+                        : dragged.position;
+                    setApps((prev) =>
+                        prev.map((app) =>
+                            app.id === item.id
+                                ? { ...app, location: "desktop", position }
+                                : app
+                        )
+                    );
+                    return;
+                }
+
                 const diff = monitor.getDifferenceFromInitialOffset();
                 if (!diff) return;
 
@@ -204,7 +296,7 @@ function DesktopContent() {
 
                 setApps((prev) =>
                     prev.map((app) =>
-                        movingIds.includes(app.id)
+                        movingIds.includes(app.id) && app.location === "desktop"
                             ? {
                                   ...app,
                                   position: snapToGrid(
@@ -217,7 +309,7 @@ function DesktopContent() {
                 );
             },
         }),
-        [selectedIds]
+        [selectedIds, apps]
     );
 
     return (
@@ -231,18 +323,27 @@ function DesktopContent() {
         >
             <div className="wallpaper" />
             <div>
-                {apps.map((app) => (
-                    <Apps
-                        key={app.id}
-                        id={app.id}
-                        iconSrc={app.iconSrc}
-                        title={app.title}
-                        onClick={() => handleAppClick(app.id)}
-                        position={app.position}
-                        selected={selectedIds.includes(app.id)}
-                        onSelect={handleSelect}
-                    />
-                ))}
+                {apps
+                    .filter((app) => app.location === "desktop")
+                    .map((app) => (
+                        <Apps
+                            key={app.id}
+                            id={app.id}
+                            iconSrc={app.iconSrc}
+                            title={app.title}
+                            onClick={() => handleDesktopOpen(app.id)}
+                            position={app.position}
+                            selected={selectedIds.includes(app.id)}
+                            onSelect={handleSelect}
+                            onDropApp={
+                                app.id === "folder"
+                                    ? moveToFolder
+                                    : app.id === "trash"
+                                    ? moveToTrash
+                                    : undefined
+                            }
+                        />
+                    ))}
                 {marquee && (
                     <div
                         className="marquee-selection"
@@ -258,45 +359,70 @@ function DesktopContent() {
                     <AboutMeApp
                         isOpen={openAboutMe}
                         onClose={() => setOpenAboutMe(false)}
+                        focusToken={focusTokens["about-me"]}
                     />
                 )}
                 {openAWS && (
-                    <AWS isOpen={openAWS} onClose={() => setOpenAWS(false)} />
+                    <AWS
+                        isOpen={openAWS}
+                        onClose={() => setOpenAWS(false)}
+                        focusToken={focusTokens["AWS"]}
+                    />
                 )}
                 {openMyResume && (
                     <Resume
                         isOpen={openMyResume}
                         onClose={() => setOpenMyResume(false)}
+                        focusToken={focusTokens["Resume"]}
                     />
                 )}
                 {openContactMe && (
                     <ContactMe
                         isOpen={openContactMe}
                         onClose={() => setOpenContactMe(false)}
+                        focusToken={focusTokens["Contact"]}
                     />
                 )}
                 {openFolder && (
                     <ProjectsFolder
                         isOpen={openFolder}
                         onClose={() => setOpenFolder(false)}
+                        apps={apps}
+                        view={finderView}
+                        onViewChange={setFinderView}
+                        onOpenApp={handleAppClick}
+                        focusToken={
+                            (focusTokens["folder"] ?? 0) +
+                            (focusTokens["trash"] ?? 0)
+                        }
                     />
                 )}
                 {openGaib && (
                     <GAIB
                         isOpen={openGaib}
                         onClose={() => setOpenGaib(false)}
+                        focusToken={focusTokens["GAIB"]}
                     />
                 )}
                 {openWork && (
                     <WorkExperience
                         isOpen={openWork}
                         onClose={() => setOpenWork(false)}
+                        focusToken={focusTokens["work"]}
                     />
                 )}
                 {openSkills && (
                     <SkillsApp
                         isOpen={openSkills}
                         onClose={() => setOpenSkills(false)}
+                        focusToken={focusTokens["Skills"]}
+                    />
+                )}
+                {openFigma && (
+                    <FigmaClone
+                        isOpen={openFigma}
+                        onClose={() => setOpenFigma(false)}
+                        focusToken={focusTokens["figma"]}
                     />
                 )}
             </div>

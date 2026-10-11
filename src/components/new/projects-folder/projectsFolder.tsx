@@ -1,100 +1,136 @@
-import React, { useState } from "react";
+import React from "react";
+import { Monitor, Folder, Trash2 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { AppFrame } from "../app-frames/App-frames";
 import "./projectfolder.css";
-import { useDrop } from "react-dnd";
 import Apps from "../Apps/Apps";
 
+export type FinderView = "desktop" | "folder" | "trash";
 
-type ProjectsFolderProps = { isOpen: boolean; onClose: () => void };
+type FinderApp = {
+    id: string;
+    iconSrc: string;
+    title: string;
+    location: "desktop" | "folder" | "trash";
+};
 
-const GRID_SIZE = 10;
-const snapToGrid = (x: number, y: number) => ({
-    x: (x / GRID_SIZE) * GRID_SIZE,
-    y: (y / GRID_SIZE) * GRID_SIZE,
-});
+type ProjectsFolderProps = {
+    isOpen: boolean;
+    onClose: () => void;
+    apps: FinderApp[];
+    view: FinderView;
+    onViewChange: (view: FinderView) => void;
+    onOpenApp: (id: string) => void;
+    focusToken?: number;
+};
 
+const locations: { id: FinderView; label: string; icon: LucideIcon }[] = [
+    { id: "desktop", label: "Desktop", icon: Monitor },
+    { id: "folder", label: "Projects", icon: Folder },
+    { id: "trash", label: "Trash", icon: Trash2 },
+];
+
+const emptyText: Record<FinderView, { title: string; text: string }> = {
+    desktop: {
+        title: "Nothing on the desktop",
+        text: "Desktop apps will show up here.",
+    },
+    folder: {
+        title: "This folder is empty",
+        text: "Drag any app onto the Projects icon to add it here.",
+    },
+    trash: {
+        title: "Trash is empty",
+        text: "Drag an app onto the Trash to remove it from the desktop.",
+    },
+};
+
+const appsIn = (apps: FinderApp[], view: FinderView) =>
+    apps.filter(
+        (app) =>
+            app.location === view &&
+            !(view === "desktop" && (app.id === "folder" || app.id === "trash"))
+    );
 
 export const ProjectsFolder: React.FC<ProjectsFolderProps> = ({
     isOpen,
     onClose,
+    apps,
+    view,
+    onViewChange,
+    onOpenApp,
+    focusToken,
 }) => {
+    const current = appsIn(apps, view);
+    const activeLabel =
+        locations.find((location) => location.id === view)?.label ?? "Projects";
 
-    const [apps, setApps] = useState([
-        {
-            id: "about-me",
-            iconSrc: "/Banner.png",
-            title: "About Me",
-            position: { x: 25, y: 40 },
-        },
-        {
-            id: "Skills",
-            iconSrc: "/Skills.png",
-            title: "Skills",
-            position: { x: 25, y: 120 },
-        },
-        {
-            id: "XP",
-            iconSrc: "/Experience.png",
-            title: "Relevant Experience",
-            position: { x: 25, y: 200 },
-        },
-        {
-            id: "GAIB",
-            iconSrc: "/GAIB.png",
-            title: "GAIB",
-            position: { x: 25, y: 280 },
-        },
-        {
-            id: "AWS",
-            iconSrc: "/AWS.png",
-            title: "AWS Certification",
-            position: { x: 25, y: 360 },
-        },
-        {
-            id: "Resume",
-            iconSrc: "/Resume.png",
-            title: "My Resume",
-            position: { x: 25, y: 440 },
-        },
-        {
-            id: "Contact",
-            iconSrc: "/ContactMe.png",
-            title: "Contact Me",
-            position: { x: 25, y: 520 },
-        },
-        {
-            id: "folder",
-            iconSrc: "/folder.png",
-            title: "Projects",
-            position: { x: 25, y: 600 },
-        }, 
-    ]);
-    
-    
-    const handleAppClick = (id: string) => {
-        console.log(`App with id ${id} clicked`);
-    }
-        
-        return (
+    return (
         <AppFrame
             isOpen={isOpen}
             onClose={onClose}
-            title="Projects Folder"
+            focusToken={focusToken}
+            title={activeLabel}
             overlay
-            contentClassName="projects-folder-body"
-            windowClassName="projects-folder-window"
+            contentClassName="finder-body"
+            windowClassName="finder-window"
         >
-            <div className="projects-folder-wrap">
-            {apps.map((app) => (
-                    <Apps
-                        key={app.id}
-                        id={app.id}
-                        iconSrc={app.iconSrc}
-                        title={app.title}
-                        onClick={() => handleAppClick(app.id)}
-                        position={app.position}
-                    />
-                ))}
+            <div className="finder-layout">
+                <aside className="finder-sidebar">
+                    <p className="finder-sidebar-head">Locations</p>
+                    {locations.map((location) => {
+                        const LocationIcon = location.icon;
+                        const count = appsIn(apps, location.id).length;
+                        return (
+                            <button
+                                key={location.id}
+                                type="button"
+                                className={`finder-nav-item ${
+                                    view === location.id ? "is-active" : ""
+                                }`}
+                                onClick={() => onViewChange(location.id)}
+                            >
+                                <span className="finder-nav-icon">
+                                    <LocationIcon size={16} />
+                                </span>
+                                <span className="finder-nav-label">
+                                    {location.label}
+                                </span>
+                                {count > 0 && (
+                                    <span className="finder-nav-count">
+                                        {count}
+                                    </span>
+                                )}
+                            </button>
+                        );
+                    })}
+                </aside>
+
+                <section className="finder-main">
+                    {current.length === 0 ? (
+                        <div className="finder-empty">
+                            <p className="finder-empty-title">
+                                {emptyText[view].title}
+                            </p>
+                            <p className="finder-empty-text">
+                                {emptyText[view].text}
+                            </p>
+                        </div>
+                    ) : (
+                        <div className="finder-grid">
+                            {current.map((app) => (
+                                <Apps
+                                    key={app.id}
+                                    id={app.id}
+                                    iconSrc={app.iconSrc}
+                                    title={app.title}
+                                    variant="folder"
+                                    onClick={() => onOpenApp(app.id)}
+                                />
+                            ))}
+                        </div>
+                    )}
+                </section>
             </div>
         </AppFrame>
     );

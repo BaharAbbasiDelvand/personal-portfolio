@@ -44,3 +44,17 @@
 .app-container {
     background-color: transparent;
 }
+
+.app-droppable .apps-wrapper {
+    background-color: rgba(99, 102, 241, 0.3);
+    outline: 2px dashed rgba(99, 102, 241, 0.7);
+    outline-offset: -2px;
+}
+
+.app-container-folder .apps-title {
+    color: #334155;
+}
+
+.app-container-folder .apps-wrapper:hover {
+    background-color: rgba(99, 102, 241, 0.12);
+}

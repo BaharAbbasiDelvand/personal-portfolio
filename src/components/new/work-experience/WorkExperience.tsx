@@ -15,7 +15,11 @@ import { Database } from "lucide-react";
 import { AppFrame } from "../app-frames/App-frames";
 import "./workexperience.css";
 
-type WorkExperienceProps = { isOpen: boolean; onClose: () => void };
+type WorkExperienceProps = {
+    isOpen: boolean;
+    onClose: () => void;
+    focusToken?: number;
+};
 
 type Tech = {
     name: string;
@@ -83,11 +87,13 @@ const experiences: ExperienceItem[] = [
 export const WorkExperience: React.FC<WorkExperienceProps> = ({
     isOpen,
     onClose,
+    focusToken,
 }) => {
     return (
         <AppFrame
             isOpen={isOpen}
             onClose={onClose}
+            focusToken={focusToken}
             title="Work Experience"
             overlay
             windowClassName="we-window"
