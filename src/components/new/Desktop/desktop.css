@@ -2,6 +2,7 @@
     position: relative;
     width: 100vw;
     height: calc(100vh - 24px);
+    height: calc(100dvh - 24px);
     overflow: hidden;
     user-select: none;
 }
@@ -31,10 +32,10 @@
     .desktop-surface {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-evenly;
         align-items: flex-start;
         height: 100%;
-        padding: 10px 12px 14px;
+        padding: 6px 12px;
     }
     .desktop-surface .app-container {
         position: static !important;

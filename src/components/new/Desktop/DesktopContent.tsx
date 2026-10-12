@@ -109,7 +109,7 @@ function DesktopContent() {
         },
         {
             id: "Resume",
-            iconSrc: "/Resume.png",
+            iconSrc: "/resume.png",
             title: "My Resume",
             position: { x: 25, y: 360 },
             location: "desktop",
