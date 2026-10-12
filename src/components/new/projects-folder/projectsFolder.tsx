@@ -1,4 +1,5 @@
 import React from "react";
+import { useDrop } from "react-dnd";
 import { Monitor, Folder, Trash2 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { AppFrame } from "../app-frames/App-frames";
@@ -21,12 +22,13 @@ type ProjectsFolderProps = {
     view: FinderView;
     onViewChange: (view: FinderView) => void;
     onOpenApp: (id: string) => void;
+    onDropInView: (id: string) => void;
     focusToken?: number;
 };
 
 const locations: { id: FinderView; label: string; icon: LucideIcon }[] = [
     { id: "desktop", label: "Desktop", icon: Monitor },
-    { id: "folder", label: "Projects", icon: Folder },
+    { id: "folder", label: "Selected Projects", icon: Folder },
     { id: "trash", label: "Trash", icon: Trash2 },
 ];
 
@@ -59,11 +61,24 @@ export const ProjectsFolder: React.FC<ProjectsFolderProps> = ({
     view,
     onViewChange,
     onOpenApp,
+    onDropInView,
     focusToken,
 }) => {
     const current = appsIn(apps, view);
     const activeLabel =
         locations.find((location) => location.id === view)?.label ?? "Projects";
+
+    const [{ isOver }, dropRef] = useDrop(
+        () => ({
+            accept: "APP_ICON",
+            drop: (item: { id: string }) => {
+                onDropInView(item.id);
+                return { droppedInFinder: true };
+            },
+            collect: (monitor) => ({ isOver: monitor.isOver() }),
+        }),
+        [onDropInView]
+    );
 
     return (
         <AppFrame
@@ -106,7 +121,10 @@ export const ProjectsFolder: React.FC<ProjectsFolderProps> = ({
                     })}
                 </aside>
 
-                <section className="finder-main">
+                <section
+                    className={`finder-main ${isOver ? "is-drop-target" : ""}`}
+                    ref={dropRef}
+                >
                     {current.length === 0 ? (
                         <div className="finder-empty">
                             <p className="finder-empty-title">

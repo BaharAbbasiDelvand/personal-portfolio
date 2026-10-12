@@ -174,7 +174,7 @@ export default function Navbar() {
                             />
                             <BottomNavigationAction
                                 sx={{ color: "black" }}
-                                label="Projects"
+                                label="Selected Projects"
                                 value="projects"
                                 icon={<LaptopMacSharpIcon />}
                                 onClick={() => handleNavigation("projects")}

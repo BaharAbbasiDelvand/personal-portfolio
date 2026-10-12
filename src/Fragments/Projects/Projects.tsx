@@ -12,7 +12,7 @@ const Projects = () => {
     return (
         <div className="project-container" id="projects">
             <h2 className="h2-container-proj" style={{ marginBottom: "20px" }}>
-                    <span className="text-normal">My </span>
+                    <span className="text-normal">Selected </span>
                     <span className="text-bold">Projects:</span>
             </h2>
             <div className="odd">

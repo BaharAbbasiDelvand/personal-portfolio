@@ -119,7 +119,7 @@ function DesktopContent() {
         {
             id: "folder",
             iconSrc: "/folder.png",
-            title: "Projects",
+            title: "Selected Projects",
             position: { x: 25, y: 600 },
             location: "desktop",
         },
@@ -139,10 +139,7 @@ function DesktopContent() {
         },
     ]);
 
-    const moveSelectedTo = (
-        draggedId: string,
-        destination: "folder" | "trash"
-    ) => {
+    const moveSelectedTo = (draggedId: string, destination: FinderView) => {
         const movingIds = (
             selectedIds.includes(draggedId) ? selectedIds : [draggedId]
         ).filter((id) => id !== "folder" && id !== "trash");
@@ -159,6 +156,7 @@ function DesktopContent() {
 
     const moveToFolder = (draggedId: string) => moveSelectedTo(draggedId, "folder");
     const moveToTrash = (draggedId: string) => moveSelectedTo(draggedId, "trash");
+    const moveToView = (draggedId: string) => moveSelectedTo(draggedId, finderView);
 
     const [selectedIds, setSelectedIds] = useState<string[]>([]);
     const [marquee, setMarquee] = useState<{
@@ -391,6 +389,7 @@ function DesktopContent() {
                         view={finderView}
                         onViewChange={setFinderView}
                         onOpenApp={handleAppClick}
+                        onDropInView={moveToView}
                         focusToken={
                             (focusTokens["folder"] ?? 0) +
                             (focusTokens["trash"] ?? 0)
