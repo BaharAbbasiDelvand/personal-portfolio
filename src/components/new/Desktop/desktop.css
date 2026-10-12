@@ -26,3 +26,20 @@
     background-position: center;
     z-index: -10;
 }
+
+@media (max-width: 640px) {
+    .desktop-surface {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        height: 100%;
+        padding: 10px 12px 14px;
+    }
+    .desktop-surface .app-container {
+        position: static !important;
+        left: auto !important;
+        top: auto !important;
+        z-index: auto !important;
+    }
+}

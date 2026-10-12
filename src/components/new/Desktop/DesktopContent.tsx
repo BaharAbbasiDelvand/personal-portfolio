@@ -11,6 +11,8 @@ import GAIB from "../GAIB/GAIB";
 import WorkExperience from "../work-experience/WorkExperience";
 import SkillsApp from "../skills-app/SkillsApp";
 import FigmaClone from "../figma-clone/FigmaClone";
+import ProjectApp from "../project-app/ProjectApp";
+import { projectApps, projectAppIds } from "../project-app/projects-data";
 const GRID_SIZE = 10;
 
 type AppItem = {
@@ -37,9 +39,12 @@ function DesktopContent() {
     const [openWork, setOpenWork] = useState(false);
     const [openSkills, setOpenSkills] = useState(false);
     const [openFigma, setOpenFigma] = useState(false);
+    const [openProjects, setOpenProjects] = useState<Record<string, boolean>>({});
     const [focusTokens, setFocusTokens] = useState<Record<string, number>>({});
     const handleAppClick = (id: string) => {
         setFocusTokens((prev) => ({ ...prev, [id]: (prev[id] ?? 0) + 1 }));
+        if (projectAppIds.includes(id))
+            setOpenProjects((prev) => ({ ...prev, [id]: true }));
         if (id === "about-me") setOpenAboutMe(true);
         if (id === "figma") setOpenFigma(true);
         if (id === "Skills") setOpenSkills(true);
@@ -99,28 +104,28 @@ function DesktopContent() {
             id: "AWS",
             iconSrc: "/AWS.png",
             title: "AWS Certification",
-            position: { x: 25, y: 360 },
+            position: { x: 25, y: 280 },
             location: "desktop",
         },
         {
             id: "Resume",
             iconSrc: "/Resume.png",
             title: "My Resume",
-            position: { x: 25, y: 440 },
+            position: { x: 25, y: 360 },
             location: "desktop",
         },
         {
             id: "Contact",
             iconSrc: "/ContactMe.png",
             title: "Contact Me",
-            position: { x: 25, y: 520 },
+            position: { x: 25, y: 440 },
             location: "desktop",
         },
         {
             id: "folder",
             iconSrc: "/folder.png",
             title: "Selected Projects",
-            position: { x: 25, y: 600 },
+            position: { x: 25, y: 520 },
             location: "desktop",
         },
         {
@@ -131,10 +136,38 @@ function DesktopContent() {
             location: "folder",
         },
         {
+            id: "bracket",
+            iconSrc: "/bracket.svg",
+            title: "Bracket Maker",
+            position: { x: 115, y: 40 },
+            location: "folder",
+        },
+        {
+            id: "book-tracker",
+            iconSrc: "/book-tracker.svg",
+            title: "Book Tracker",
+            position: { x: 115, y: 120 },
+            location: "folder",
+        },
+        {
+            id: "angle",
+            iconSrc: "/angle.svg",
+            title: "Angle Management",
+            position: { x: 115, y: 200 },
+            location: "folder",
+        },
+        {
+            id: "checkers",
+            iconSrc: "/checkers.svg",
+            title: "Checkers",
+            position: { x: 115, y: 280 },
+            location: "folder",
+        },
+        {
             id: "trash",
             iconSrc: "/trash.svg",
             title: "Trash",
-            position: { x: 25, y: 680 },
+            position: { x: 25, y: 600 },
             location: "desktop",
         },
     ]);
@@ -320,7 +353,7 @@ function DesktopContent() {
             onMouseDown={onDesktopMouseDown}
         >
             <div className="wallpaper" />
-            <div>
+            <div className="desktop-surface">
                 {apps
                     .filter((app) => app.location === "desktop")
                     .map((app) => (
@@ -424,6 +457,22 @@ function DesktopContent() {
                         focusToken={focusTokens["figma"]}
                     />
                 )}
+                {projectApps
+                    .filter((project) => openProjects[project.id])
+                    .map((project) => (
+                        <ProjectApp
+                            key={project.id}
+                            isOpen
+                            onClose={() =>
+                                setOpenProjects((prev) => ({
+                                    ...prev,
+                                    [project.id]: false,
+                                }))
+                            }
+                            focusToken={focusTokens[project.id]}
+                            project={project}
+                        />
+                    ))}
             </div>
         </div>
     );

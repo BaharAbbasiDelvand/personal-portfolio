@@ -51,7 +51,29 @@
     outline-offset: -2px;
 }
 
+.app-container-folder .apps-wrapper {
+    width: 96px;
+    height: auto;
+    padding: 12px 6px;
+    gap: 9px;
+}
+
+.app-container-folder .apps-icon {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
 .app-container-folder .apps-title {
+    width: 88px;
+    height: 32px;
+    line-height: 16px;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     color: #334155;
 }
 

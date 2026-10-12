@@ -176,11 +176,22 @@
 }
 
 @media (max-width: 640px) {
+    .skills-body {
+        overflow: auto;
+    }
     .skills-layout {
         grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        align-content: start;
+        height: auto;
+        min-height: 100%;
     }
     .skills-sidebar {
+        position: sticky;
+        top: 0;
+        z-index: 2;
         flex-direction: row;
+        align-items: center;
         overflow-x: auto;
         border-right: none;
         border-bottom: 1px solid rgba(15, 23, 42, 0.08);
@@ -191,5 +202,12 @@
     .skills-nav-item {
         width: auto;
         white-space: nowrap;
+    }
+    .skills-panel {
+        overflow: visible;
+        padding: 20px 18px;
+    }
+    .skills-panel-title {
+        font-size: 22px;
     }
 }

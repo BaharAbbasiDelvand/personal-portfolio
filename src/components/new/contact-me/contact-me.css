@@ -261,11 +261,24 @@
 }
 
 @media (max-width: 720px) {
+    .contact-me-body {
+        overflow: auto;
+    }
     .contact-layout {
         grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        align-content: start;
+        height: auto;
+        min-height: 100%;
     }
     .contact-links {
         border-right: none;
         border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+        overflow: visible;
+    }
+    .contact-form-panel {
+        overflow: visible;
+        justify-content: flex-start;
+        padding: 24px 20px 32px;
     }
 }

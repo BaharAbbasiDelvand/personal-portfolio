@@ -55,6 +55,10 @@ const Apps: React.FC<AppsProps> = ({
     const isFolderVariant = variant === "folder";
     const droppableHover = isOver && canDrop;
 
+    const shouldTapOpen = () =>
+        window.matchMedia("(max-width: 640px)").matches ||
+        window.matchMedia("(pointer: coarse)").matches;
+
     const setRefs = (node: HTMLDivElement | null) => {
         dragRef(node);
         if (onDropApp) dropRef(node);
@@ -91,6 +95,9 @@ const Apps: React.FC<AppsProps> = ({
         >
             <button
                 className={`apps-wrapper ${selected ? "apps-selected" : ""}`}
+                onClick={() => {
+                    if (shouldTapOpen()) onClick();
+                }}
                 onDoubleClick={onClick}
             >
                 <img src={iconSrc} alt={title} className="apps-icon" />

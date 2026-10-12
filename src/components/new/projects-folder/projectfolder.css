@@ -141,3 +141,47 @@
     color: #64748b;
     max-width: 34ch;
 }
+
+@media (max-width: 640px) {
+    .finder-body {
+        overflow: auto;
+    }
+    .finder-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        align-content: start;
+        height: auto;
+        min-height: 100%;
+    }
+    .finder-sidebar {
+        align-items: center;
+    }
+    .finder-sidebar {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 6px;
+        padding: 10px;
+        border-right: none;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    }
+    .finder-sidebar-head {
+        display: none;
+    }
+    .finder-nav-item {
+        width: auto;
+        white-space: nowrap;
+    }
+    .finder-nav-label {
+        flex: 0 0 auto;
+    }
+    .finder-main {
+        overflow: visible;
+    }
+    .finder-grid {
+        grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+        padding: 16px;
+    }
+}

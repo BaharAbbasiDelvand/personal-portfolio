@@ -133,9 +133,14 @@
 @media (max-width: 640px) {
     .aboutme-layout {
         grid-template-columns: 1fr;
+        gap: 22px;
+        padding: 26px 20px 32px;
     }
     .aboutme-aside {
         position: static;
-        max-width: 240px;
+        max-width: 220px;
+    }
+    .aboutme-name {
+        font-size: 30px;
     }
 }

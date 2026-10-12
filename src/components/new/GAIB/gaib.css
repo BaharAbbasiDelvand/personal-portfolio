@@ -260,10 +260,17 @@
 }
 
 @media (max-width: 620px) {
+    .gaib-page {
+        padding: 30px 18px 40px;
+        gap: 36px;
+    }
     .gaib-features {
         grid-template-columns: 1fr;
     }
     .gaib-title {
-        font-size: 52px;
+        font-size: 48px;
+    }
+    .gaib-tagline {
+        font-size: 15.5px;
     }
 }
