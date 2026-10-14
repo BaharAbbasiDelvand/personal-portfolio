@@ -34,7 +34,6 @@ const Skills = () => {
             <div className="skills-tiles">
                 <Square icon={<CodeIcon />} text="Full-Stack Development" />
                 <Square icon={<TerminalIcon />} text="Shell Scripting" />
-                <Square icon={<WebhookIcon />} text="RESTful APIs" />
                 <Square icon={<DeveloperBoardIcon />} text="UI/UX Design" />
                 <Square icon={<IntegrationInstructionsIcon />} text="CI/CD" />
                 <Square icon={<GitHubIcon />} text="Version Control (Git)" />

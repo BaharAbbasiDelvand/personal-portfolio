@@ -84,10 +84,13 @@ export function AppFrame({
 }: AppFrameProps) {
     const [isMin, setIsMin] = useState(false);
     const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+    const [size, setSize] = useState<{ w: number; h: number } | null>(null);
     const [zIndex, setZIndex] = useState(50);
     const didInit = useRef(false);
+    const windowRef = useRef<HTMLDivElement>(null);
 
-    const bringToFront = useCallback(() => {
+    const bringToFront = useCallback((e?: React.MouseEvent) => {
+        if (e) e.stopPropagation();
         zTop += 1;
         setZIndex(zTop);
     }, []);
@@ -148,10 +151,73 @@ export function AppFrame({
         } else {
             didInit.current = false;
             setPos(null);
+            setSize(null);
             setSnapped(null);
             setSnapPreview(null);
         }
     }, [isOpen]);
+
+    const onResizeMouseDown = (dir: string) => (e: React.MouseEvent) => {
+        e.preventDefault();
+        if (window.matchMedia("(max-width: 640px)").matches) return;
+        const el = windowRef.current;
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        if (snapped) setSnapped(null);
+        setPos({ x: rect.left, y: rect.top });
+
+        const start = {
+            x: e.clientX,
+            y: e.clientY,
+            w: rect.width,
+            h: rect.height,
+            left: rect.left,
+            top: rect.top,
+        };
+        const MIN_W = 360;
+        const MIN_H = 220;
+
+        const onMove = (ev: MouseEvent) => {
+            const dx = ev.clientX - start.x;
+            const dy = ev.clientY - start.y;
+            let w = start.w;
+            let h = start.h;
+            let left = start.left;
+            let top = start.top;
+
+            if (dir.includes("e")) w = start.w + dx;
+            if (dir.includes("s")) h = start.h + dy;
+            if (dir.includes("w")) {
+                w = start.w - dx;
+                left = start.left + dx;
+            }
+            if (dir.includes("n")) {
+                h = start.h - dy;
+                top = start.top + dy;
+            }
+
+            if (w < MIN_W) {
+                if (dir.includes("w")) left = start.left + (start.w - MIN_W);
+                w = MIN_W;
+            }
+            if (h < MIN_H) {
+                if (dir.includes("n")) top = start.top + (start.h - MIN_H);
+                h = MIN_H;
+            }
+
+            setSize({ w, h });
+            if (dir.includes("w") || dir.includes("n"))
+                setPos({ x: left, y: top });
+        };
+
+        const onUp = () => {
+            window.removeEventListener("mousemove", onMove);
+            window.removeEventListener("mouseup", onUp);
+        };
+
+        window.addEventListener("mousemove", onMove);
+        window.addEventListener("mouseup", onUp);
+    };
 
     useEffect(() => {
         if (isOpen && focusToken !== undefined) {
@@ -168,7 +234,13 @@ export function AppFrame({
     const windowStyle: React.CSSProperties = sr
         ? { position: "fixed", left: sr.x, top: sr.y, width: sr.w, height: sr.h, transform: "none", borderRadius: 0 }
         : pos
-        ? { position: "fixed", left: pos.x, top: pos.y, transform: "none" }
+        ? {
+              position: "fixed",
+              left: pos.x,
+              top: pos.y,
+              transform: "none",
+              ...(size ? { width: size.w, height: size.h } : {}),
+          }
         : {};
 
     const isFloating = !!(pos || snapped);
@@ -188,10 +260,23 @@ export function AppFrame({
                 style={{ zIndex }}
             >
                 <div
+                    ref={windowRef}
                     className={`af-window ${isMin ? "af-min" : ""} ${windowClassName}`}
                     style={windowStyle}
                     onMouseDown={bringToFront}
                 >
+                    {!isMin && (
+                        <>
+                            <div className="af-resize af-resize-n" onMouseDown={onResizeMouseDown("n")} />
+                            <div className="af-resize af-resize-s" onMouseDown={onResizeMouseDown("s")} />
+                            <div className="af-resize af-resize-e" onMouseDown={onResizeMouseDown("e")} />
+                            <div className="af-resize af-resize-w" onMouseDown={onResizeMouseDown("w")} />
+                            <div className="af-resize af-resize-ne" onMouseDown={onResizeMouseDown("ne")} />
+                            <div className="af-resize af-resize-nw" onMouseDown={onResizeMouseDown("nw")} />
+                            <div className="af-resize af-resize-se" onMouseDown={onResizeMouseDown("se")} />
+                            <div className="af-resize af-resize-sw" onMouseDown={onResizeMouseDown("sw")} />
+                        </>
+                    )}
                     <div className="af-titlebar" onMouseDown={onTitlebarMouseDown}>
                         <div className="af-traffic">
                             <button aria-label="Close" className="af-light af-close" onClick={onClose} />

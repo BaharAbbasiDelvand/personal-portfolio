@@ -114,7 +114,6 @@ const categories: Category[] = [
             { name: "pandas", icon: SiPandas, color: "#150458" },
             { name: "Zustand", color: "#8B5E3C", mono: "Zu" },
             { name: "Liveblocks", color: "#FF4F9A", mono: "Lb" },
-            { name: "RESTful API", icon: Globe, color: "#0EA5E9" },
         ],
     },
     {

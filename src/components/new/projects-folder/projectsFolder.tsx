@@ -23,14 +23,59 @@ type ProjectsFolderProps = {
     onViewChange: (view: FinderView) => void;
     onOpenApp: (id: string) => void;
     onDropInView: (id: string) => void;
+    onMoveTo: (id: string, location: FinderView) => void;
     focusToken?: number;
 };
 
-const locations: { id: FinderView; label: string; icon: LucideIcon }[] = [
+type LocationDef = { id: FinderView; label: string; icon: LucideIcon };
+
+const locations: LocationDef[] = [
     { id: "desktop", label: "Desktop", icon: Monitor },
     { id: "folder", label: "Selected Projects", icon: Folder },
     { id: "trash", label: "Trash", icon: Trash2 },
 ];
+
+const FinderLocationItem: React.FC<{
+    location: LocationDef;
+    count: number;
+    isActive: boolean;
+    onViewChange: (view: FinderView) => void;
+    onMoveTo: (id: string, location: FinderView) => void;
+}> = ({ location, count, isActive, onViewChange, onMoveTo }) => {
+    const [{ isOver, canDrop }, dropRef] = useDrop(
+        () => ({
+            accept: "APP_ICON",
+            drop: (item: { id: string }) => {
+                onMoveTo(item.id, location.id);
+                return { droppedInLocation: true };
+            },
+            collect: (monitor) => ({
+                isOver: monitor.isOver(),
+                canDrop: monitor.canDrop(),
+            }),
+        }),
+        [location.id, onMoveTo]
+    );
+    const LocationIcon = location.icon;
+    return (
+        <button
+            ref={dropRef}
+            type="button"
+            className={`finder-nav-item ${isActive ? "is-active" : ""} ${
+                isOver && canDrop ? "is-drop-target" : ""
+            }`}
+            onClick={() => onViewChange(location.id)}
+        >
+            <span className="finder-nav-icon">
+                <LocationIcon size={16} />
+            </span>
+            <span className="finder-nav-label">{location.label}</span>
+            {count > 0 && (
+                <span className="finder-nav-count">{count}</span>
+            )}
+        </button>
+    );
+};
 
 const emptyText: Record<FinderView, { title: string; text: string }> = {
     desktop: {
@@ -62,6 +107,7 @@ export const ProjectsFolder: React.FC<ProjectsFolderProps> = ({
     onViewChange,
     onOpenApp,
     onDropInView,
+    onMoveTo,
     focusToken,
 }) => {
     const current = appsIn(apps, view);
@@ -93,32 +139,16 @@ export const ProjectsFolder: React.FC<ProjectsFolderProps> = ({
             <div className="finder-layout">
                 <aside className="finder-sidebar">
                     <p className="finder-sidebar-head">Locations</p>
-                    {locations.map((location) => {
-                        const LocationIcon = location.icon;
-                        const count = appsIn(apps, location.id).length;
-                        return (
-                            <button
-                                key={location.id}
-                                type="button"
-                                className={`finder-nav-item ${
-                                    view === location.id ? "is-active" : ""
-                                }`}
-                                onClick={() => onViewChange(location.id)}
-                            >
-                                <span className="finder-nav-icon">
-                                    <LocationIcon size={16} />
-                                </span>
-                                <span className="finder-nav-label">
-                                    {location.label}
-                                </span>
-                                {count > 0 && (
-                                    <span className="finder-nav-count">
-                                        {count}
-                                    </span>
-                                )}
-                            </button>
-                        );
-                    })}
+                    {locations.map((location) => (
+                        <FinderLocationItem
+                            key={location.id}
+                            location={location}
+                            count={appsIn(apps, location.id).length}
+                            isActive={view === location.id}
+                            onViewChange={onViewChange}
+                            onMoveTo={onMoveTo}
+                        />
+                    ))}
                 </aside>
 
                 <section

@@ -172,18 +172,59 @@ function DesktopContent() {
         },
     ]);
 
+    const findFreeDesktopSpot = (occupied: { x: number; y: number }[]) => {
+        const cols = [25, 125, 225, 325, 425];
+        const maxY = Math.max(280, window.innerHeight - 140);
+        const slots: { x: number; y: number }[] = [];
+        for (const x of cols) {
+            for (let y = 40; y <= maxY; y += 80) {
+                slots.push({ x, y });
+            }
+        }
+        const free = slots.filter(
+            (s) =>
+                !occupied.some(
+                    (o) =>
+                        Math.abs(o.x - s.x) < 70 && Math.abs(o.y - s.y) < 70
+                )
+        );
+        if (free.length === 0) {
+            return {
+                x: cols[Math.floor(Math.random() * cols.length)],
+                y: 40 + Math.floor(Math.random() * 7) * 80,
+            };
+        }
+        return free[Math.floor(Math.random() * free.length)];
+    };
+
     const moveSelectedTo = (draggedId: string, destination: FinderView) => {
         const movingIds = (
             selectedIds.includes(draggedId) ? selectedIds : [draggedId]
         ).filter((id) => id !== "folder" && id !== "trash");
         if (movingIds.length === 0) return;
-        setApps((prev) =>
-            prev.map((app) =>
-                movingIds.includes(app.id)
-                    ? { ...app, location: destination }
-                    : app
-            )
-        );
+        setApps((prev) => {
+            if (destination !== "desktop") {
+                return prev.map((app) =>
+                    movingIds.includes(app.id)
+                        ? { ...app, location: destination }
+                        : app
+                );
+            }
+            const occupied = prev
+                .filter(
+                    (app) =>
+                        app.location === "desktop" &&
+                        !movingIds.includes(app.id)
+                )
+                .map((app) => ({ ...app.position }));
+            return prev.map((app) => {
+                if (!movingIds.includes(app.id)) return app;
+                if (app.location === "desktop") return app;
+                const spot = findFreeDesktopSpot(occupied);
+                occupied.push(spot);
+                return { ...app, location: "desktop", position: spot };
+            });
+        });
         setSelectedIds([]);
     };
 
@@ -215,6 +256,7 @@ function DesktopContent() {
 
     const onDesktopMouseDown = (e: React.MouseEvent) => {
         if (e.button !== 0) return;
+        setMarquee(null);
         const start = { x: e.clientX, y: e.clientY };
         marqueeStart.current = start;
         if (!e.shiftKey && !e.metaKey) setSelectedIds([]);
@@ -253,10 +295,12 @@ function DesktopContent() {
             setMarquee(null);
             window.removeEventListener("mousemove", onMove);
             window.removeEventListener("mouseup", onUp);
+            window.removeEventListener("blur", onUp);
         };
 
         window.addEventListener("mousemove", onMove);
         window.addEventListener("mouseup", onUp);
+        window.addEventListener("blur", onUp);
     };
 
     const isOccupied = (x: number, y: number, draggingId: string) => {
@@ -423,6 +467,7 @@ function DesktopContent() {
                         onViewChange={setFinderView}
                         onOpenApp={handleAppClick}
                         onDropInView={moveToView}
+                        onMoveTo={moveSelectedTo}
                         focusToken={
                             (focusTokens["folder"] ?? 0) +
                             (focusTokens["trash"] ?? 0)
