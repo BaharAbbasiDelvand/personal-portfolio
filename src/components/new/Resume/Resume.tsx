@@ -18,7 +18,7 @@ export const AWS: React.FC<ResumeProps> = ({ isOpen, onClose, focusToken }) => {
             contentClassName="resume-body"
         >
             <div className="pdf-wrap">
-                <embed src="/Resume.pdf" type="application/pdf" />
+                <embed src="/Resume.pdf?v=20261018" type="application/pdf" />
             </div>
         </AppFrame>
     );

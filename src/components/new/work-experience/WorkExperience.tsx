@@ -1,14 +1,10 @@
 import React from "react";
 import type { IconType } from "react-icons";
 import {
-    SiReact,
     SiNextdotjs,
-    SiExpress,
     SiTypescript,
-    SiAuth0,
-    SiVercel,
-    SiOpenai,
-    SiSlack,
+    SiPrisma,
+    SiPostgresql,
     SiArcgis,
 } from "react-icons/si";
 import { Database } from "lucide-react";
@@ -42,39 +38,37 @@ const experiences: ExperienceItem[] = [
     {
         company: "MBA4HIRE",
         role: "Full-Stack Developer",
-        period: "Jun 2024 — Present",
+        period: "Jun 2024 — Oct 2026",
         location: "Remote",
         summary:
-            "Building a full-stack financial platform end to end — from real-time routing and auth to AI-powered internal tooling.",
+            "As one of two engineers, built a multi-tenant SaaS platform from the ground up, owning architecture, AI orchestration, a no-code workflow engine, and data integrations.",
         bullets: [
-            "Built and deployed a full-stack financial platform with Next.js, React, Express.js, Vercel, and Azure SQL — real-time routing, global state with Zustand, and secure auth via Auth0 and JWTs.",
-            "Created two AI-driven chatbots: one using Retrieval-Augmented Generation with vectorized semantic search, and another that turns natural-language prompts into structured JSON tables and generates database schemas.",
-            "Developed a Slack integration with full multi-workspace support and persistent per-workspace state, letting users reach their linked workspaces in-app and cutting context switching.",
-            "Implemented real-time UI features — drag-and-drop task workflows, live notifications, and dynamic data rehydration — to improve responsiveness and interactivity.",
+            "As one of two engineers, built a multi-tenant SaaS platform (Next.js, TypeScript, Prisma, Azure SQL, PostgreSQL/pgvector) from the ground up, designing its architecture, authentication, tenant isolation, and ~210 API endpoints.",
+            "Designed the platform's AI orchestration layer, using deterministic routing and RAG to narrow each request to only the relevant tools; built an eval harness that replays real traces so routing changes ship with regression coverage.",
+            "Architected a no-code, drag-and-drop workflow engine with ~35 reusable node types, run history, and durable suspend/resume, letting non-technical admins automate business processes and replacing ~30 hours/week of manual coordination.",
+            "Built the platform's data-integration layer, connecting external SQL warehouses such as Xactly Connect via Model Context Protocol (MCP) and a REST SQL bridge, with chunked streaming sync of millions of rows into Azure SQL for live dashboards and AI access.",
+            "Optimized platform performance and reliability by adding database indexes, batching queries, lazy-loading heavy views, and cutting redundant API fan-out from ~12 calls to 1 per view through caching and deduplication.",
         ],
         tech: [
             { name: "Next.js", icon: SiNextdotjs, color: "#111111" },
-            { name: "React", icon: SiReact, color: "#149ECA" },
             { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-            { name: "Express", icon: SiExpress, color: "#444444" },
-            { name: "Zustand", color: "#8B5E3C", mono: "Zu" },
-            { name: "Auth0", icon: SiAuth0, color: "#EB5424" },
-            { name: "Azure", color: "#0078D4", mono: "Az" },
-            { name: "Vercel", icon: SiVercel, color: "#111111" },
-            { name: "OpenAI", icon: SiOpenai, color: "#412991" },
-            { name: "Slack", icon: SiSlack, color: "#4A154B" },
+            { name: "Prisma", icon: SiPrisma, color: "#2D3748" },
+            { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+            { name: "Azure SQL", color: "#0078D4", mono: "Az" },
+            { name: "RAG", color: "#0EA5E9", mono: "AI" },
+            { name: "MCP", color: "#6366F1", mono: "MCP" },
         ],
     },
     {
         company: "McMaster University · Art History Research",
-        role: "Research & Technical Assistant",
+        role: "Geospatial Analysis of Second Empire France Artists",
         period: "Jun 2024 — Present",
         location: "Hamilton, ON",
         summary:
-            "Spatial-data research mapping 19th-century French artists' networks alongside a McMaster Art History professor.",
+            "Spatial research mapping 19th-century French artists' networks alongside a McMaster Art History professor.",
         bullets: [
-            "Mapped 19th-century French artists' residences and migration patterns with ArcGIS Pro, SQL, and Excel to analyze how geography and proximity to institutions shaped artistic networks.",
-            "Cleaned and organized historical data from multiple sources into structured artist profiles; standardized locations and dates for accurate spatial mapping and analysis.",
+            "Collaborated with a McMaster Art History professor, Dr. Alison McQueen, on a spatial research project mapping 19th-century French artists' residences and migration patterns.",
+            "Used ArcGIS Pro, SQL, and Excel to clean and standardize historical data, and analyzed how institutional proximity and urban expansion shaped artistic networks.",
         ],
         tech: [
             { name: "ArcGIS Pro", icon: SiArcgis, color: "#0079C1" },

@@ -1,5 +1,5 @@
 import React from "react";
-import { MapPin, GraduationCap, Briefcase } from "lucide-react";
+import { MapPin, GraduationCap, Award } from "lucide-react";
 import { AppFrame } from "../app-frames/App-frames";
 import "./aboutmeapp.css";
 import Me from "../../../Assets/photos/Me.png";
@@ -15,12 +15,12 @@ const facts = [
     {
         icon: GraduationCap,
         label: "Studied",
-        value: "Computer Science, McMaster (Art History minor)",
+        value: "Bachelor of Applied Science (B.A.Sc.), Honours Computer Science (Minor in Art History)",
     },
     {
-        icon: Briefcase,
-        label: "Currently",
-        value: "Full-Stack Developer @ MBA4HIRE",
+        icon: Award,
+        label: "Certified",
+        value: "AWS Certified Developer – Associate",
     },
 ];
 
@@ -79,26 +79,49 @@ export const AboutMeApp: React.FC<AboutMeAppProps> = ({
 
                     <div className="aboutme-prose">
                         <p>
-                            My work blends technical problem-solving with clear,
-                            intentional design. Whether I&apos;m building
-                            full-stack web apps, integrating AI into development
-                            workflows, or analyzing 19th-century artists through
-                            geospatial data, I focus on creating systems that are
-                            intuitive, efficient, and thoughtful.
+                            I&apos;m a full-stack developer and Honours Computer
+                            Science graduate from McMaster University, where I
+                            paired my CS degree with a minor in Art History. That
+                            mix is sort of my whole thing.
                         </p>
                         <p>
-                            I&apos;m currently a full-stack developer at
-                            MBA4HIRE, where I&apos;ve helped build scalable tools
-                            for real-time financial operations and automated
-                            schema generation using GPT-powered features. I also
-                            assist on an art history research project using
-                            ArcGIS and SQL to study how geography shaped artistic
-                            networks in 19th-century France.
+                            I&apos;m passionate about building thoughtful,
+                            functional applications and exploring the
+                            intersection of technology and creative expression.
+                            Coming at things from both sides, I care as much
+                            about how something feels to use as whether the code
+                            underneath is clean. My interests extend across
+                            software engineering,
+                            artificial intelligence, web development, and
+                            information security.
                         </p>
                         <p>
-                            This portfolio is a space for the things I&apos;ve
-                            built, explored, and continue to learn. Thanks for
-                            stopping by.
+                            Professionally, I&apos;ve worked across the full
+                            stack, helping architect and build a multi-tenant
+                            SaaS platform from the ground up. My experience spans
+                            scalable web development, AI orchestration and
+                            retrieval-augmented generation (RAG), workflow
+                            automation, and complex data integrations. I
+                            particularly enjoy tackling challenging technical
+                            problems, designing systems that are both reliable
+                            and intuitive, and finding ways to make sophisticated
+                            technology more accessible.
+                        </p>
+                        <p>
+                            Beyond software development, I&apos;m involved in
+                            interdisciplinary research at McMaster University,
+                            using geospatial analysis to explore the
+                            relationships between art, history, and urban
+                            development in nineteenth-century France. This work
+                            brings together two fields I&apos;m deeply passionate
+                            about and allows me to explore how technology can
+                            offer new perspectives on the humanities.
+                        </p>
+                        <p>
+                            This portfolio is where all of that lives, the
+                            projects I&apos;ve shipped and the ones I&apos;m
+                            still tinkering with. Have a look around, and thanks
+                            for stopping by!
                         </p>
                     </div>
                 </div>
