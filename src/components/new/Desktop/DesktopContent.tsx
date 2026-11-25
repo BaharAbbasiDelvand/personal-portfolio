@@ -164,6 +164,13 @@ function DesktopContent() {
             location: "folder",
         },
         {
+            id: "youtube-downloader",
+            iconSrc: "/youtube.svg",
+            title: "YouTube Downloader",
+            position: { x: 115, y: 360 },
+            location: "folder",
+        },
+        {
             id: "trash",
             iconSrc: "/trash.svg",
             title: "Trash",

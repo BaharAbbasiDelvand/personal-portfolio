@@ -41,7 +41,7 @@ const experiences: ExperienceItem[] = [
         period: "Jun 2024 — Oct 2026",
         location: "Remote",
         summary:
-            "As one of two engineers, built a multi-tenant SaaS platform from the ground up, owning architecture, AI orchestration, a no-code workflow engine, and data integrations.",
+            "Core engineer on a SaaS product built end to end, spanning platform architecture, AI orchestration, workflow automation, and data integration.",
         bullets: [
             "As one of two engineers, built a multi-tenant SaaS platform (Next.js, TypeScript, Prisma, Azure SQL, PostgreSQL/pgvector) from the ground up, designing its architecture, authentication, tenant isolation, and ~210 API endpoints.",
             "Designed the platform's AI orchestration layer, using deterministic routing and RAG to narrow each request to only the relevant tools; built an eval harness that replays real traces so routing changes ship with regression coverage.",

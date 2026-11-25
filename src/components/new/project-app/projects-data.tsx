@@ -8,6 +8,7 @@ import {
     SiVite,
     SiPython,
     SiElm,
+    SiYoutube,
 } from "react-icons/si";
 import {
     Trophy,
@@ -25,6 +26,10 @@ import {
     Grid3x3,
     Crosshair,
     Crown,
+    Download,
+    Terminal,
+    Film,
+    FolderDown,
 } from "lucide-react";
 import type { ProjectContent } from "./ProjectApp";
 
@@ -213,6 +218,56 @@ export const projectApps: ProjectContent[] = [
             {
                 label: "View on GitHub",
                 href: "https://github.com/BaharAbbasiDelvand/Checkers",
+                variant: "ghost",
+            },
+        ],
+    },
+    {
+        id: "youtube-downloader",
+        title: "YouTube Downloader",
+        tagline:
+            "A tiny Python script that saves any YouTube video to disk with a single command.",
+        badge: "CLI utility · Python",
+        accent: "#ff3b30",
+        accentInk: "#c1121f",
+        gradientFrom: "#ff4d4d",
+        gradientTo: "#c1121f",
+        description:
+            "YouTube Downloader is a small command-line utility I wrote in Python to pull videos off YouTube and save them locally. It wraps yt-dlp through a clean function, so you pass a video URL and a destination folder and it downloads the file named after the video title. I built it as a quick, practical tool for grabbing videos to watch offline, and it is a nice example of using Python to script around an existing command-line program.",
+        highlights: [
+            {
+                icon: Download,
+                title: "One-call downloads",
+                text: "Pass a URL and a folder, and the script fetches the full video to disk.",
+            },
+            {
+                icon: Terminal,
+                title: "yt-dlp under the hood",
+                text: "Shells out to yt-dlp via subprocess, capturing its output and exit status.",
+            },
+            {
+                icon: Film,
+                title: "Clean file names",
+                text: "Saves each video named after its title, so the library stays readable.",
+            },
+            {
+                icon: FolderDown,
+                title: "Pick your destination",
+                text: "Point it at any folder on your machine and the download lands there.",
+            },
+        ],
+        tech: [
+            { name: "Python", icon: SiPython, color: "#3776AB" },
+            { name: "yt-dlp", icon: SiYoutube, color: "#FF0000" },
+        ],
+        placeholder: {
+            title: "Command-line tool",
+            text: "This one runs in the terminal rather than the browser — grab the script from GitHub to try it.",
+        },
+        links: [
+            {
+                label: "View on GitHub",
+                href: "https://github.com/BaharAbbasiDelvand/YoutubeDownloader",
                 variant: "ghost",
             },
         ],
